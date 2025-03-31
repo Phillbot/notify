@@ -1,0 +1,37 @@
+{
+  "name": "notify-web-client",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "predev": "pnpm run clean:types",
+    "dev": "concurrently \"vite\" \"pnpm run styles:watch\"",
+    "build": "vite build",
+    "preview": "vite preview",
+    "styles": "npx typed-scss-modules . --pattern '**/*.module.scss' --camelCase",
+    "styles:watch": "npx typed-scss-modules . --watch --pattern '**/*.module.scss' --camelCase --ignore '**/{node_modules,dist,.git}/**'",
+    "clean:types": "find . -name '*.module.scss.d.ts' -exec rm -f {} +",
+    "lint:styles": "stylelint \"**/*.{scss,css}\"",
+    "format:styles": "stylelint \"**/*.{scss,css}\" --fix"
+  },
+  "peerDependencies": {
+    "inversify": "6.2.2",
+    "inversify-react": "1.2.0",
+    "mobx": "6.13.7",
+    "mobx-react-lite": "4.1.0",
+    "mobx-react": "9.2.0",
+    "classnames": "2.5.1",
+    "rxjs": "7.8.2",
+    "sass": "1.86.0"
+  },
+  "dependencies": {
+    "@notify/core": "workspace:*",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.2.0",
+    "@vitejs/plugin-react": "4.3.4"
+  }
+}

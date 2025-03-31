@@ -1,0 +1,8 @@
+stylelint.config.ts
+node_modules
+dist
+build
+coverage
+*.config.ts
+vite.config.ts
+.eslintrc.cjs

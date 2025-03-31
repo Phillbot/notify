@@ -1,0 +1,17 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "baseUrl": ".",
+    "paths": {
+      "~core/*": [
+        "."
+      ]
+    }
+  },
+  "include": [
+    ".",
+    "global.d.ts",
+    "vite.config.ts",
+  ]
+}

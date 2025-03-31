@@ -1,0 +1,27 @@
+.counter {
+  width: 10em;
+  height: 5em;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+
+  &__display {
+    color: red;
+    font-size: 1.5em;
+    text-align: center;
+  }
+
+  &__button-panel {
+    display: flex;
+  }
+
+  &__button-panel-button {
+    flex: 1 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    padding: 0.5em;
+    margin: 0.25em;
+  }
+}

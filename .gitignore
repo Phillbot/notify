@@ -1,0 +1,15 @@
+node_modules
+dist
+.vite
+*.md.scss.d.ts
+*.module.scss.d.ts
+*.log
+.idea/
+.vscode/
+.expo
+.expo-shared/
+ios/
+android/
+*.bundle
+*.keystore
+.DS_Store

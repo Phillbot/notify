@@ -1,0 +1,23 @@
+{
+  "name": "@notify/core",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "peerDependencies": {
+    "sass": "1.86.0",
+    "react": "18.2.0",
+    "react-native": "0.76.7",
+    "react-dom": "18.2.0",
+    "inversify": "6.2.2",
+    "mobx": "6.13.7",
+    "mobx-react": "9.2.0",
+    "mobx-react-lite": "4.1.0",
+    "classnames": "2.5.1",
+    "rxjs": "7.8.2"
+  },
+  "dependencies": {
+    "inversify": "6.2.2",
+    "inversify-react": "1.2.0",
+    "reflect-metadata": "0.2.2"
+  }
+}
