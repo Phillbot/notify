@@ -10,9 +10,6 @@
       "~core/*": [
         "../../packages/core/*"
       ],
-      "~lol/*": [
-        "aaa/*"
-      ]
     }
   },
   "include": [

@@ -1,2 +1,11 @@
 ## TODO:
 - Implement declare for mobile
+- Mobile assets (see package.json)
+- Mobile debug
+- Mobile build
+- Desktop cross platform builds
+- Migrate ESlint to ^9.xx
+- Disposable
+- global @mixins for detected devices and others
+- Add commit rules
+- declare for react-native apps

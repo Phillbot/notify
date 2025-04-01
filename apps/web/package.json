@@ -11,16 +11,16 @@
     "styles": "npx typed-scss-modules . --pattern '**/*.module.scss' --camelCase",
     "styles:watch": "npx typed-scss-modules . --watch --pattern '**/*.module.scss' --camelCase --ignore '**/{node_modules,dist,.git}/**'",
     "clean:types": "find . -name '*.module.scss.d.ts' -exec rm -f {} +",
-    "lint:styles": "stylelint \"**/*.{scss,css}\"",
-    "format:styles": "stylelint \"**/*.{scss,css}\" --fix"
+    "lint:styles": "stylelint '**/*.{scss,css}'",
+    "format:styles": "stylelint '**/*.{scss,css}' --fix"
   },
   "peerDependencies": {
+    "classnames": "2.5.1",
     "inversify": "6.2.2",
     "inversify-react": "1.2.0",
     "mobx": "6.13.7",
-    "mobx-react-lite": "4.1.0",
     "mobx-react": "9.2.0",
-    "classnames": "2.5.1",
+    "mobx-react-lite": "4.1.0",
     "rxjs": "7.8.2",
     "sass": "1.86.0"
   },
@@ -30,8 +30,19 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-class-properties": "7.18.6",
+    "@babel/plugin-proposal-decorators": "7.25.9",
+    "@babel/plugin-transform-typescript": "7.27.0",
+    "@stylistic/stylelint-plugin": "^3.1.2",
     "@types/react": "18.3.12",
     "@types/react-dom": "18.2.0",
-    "@vitejs/plugin-react": "4.3.4"
+    "@vitejs/plugin-react": "4.3.4",
+    "babel-plugin-transform-typescript-metadata": "0.3.2",
+    "postcss-scss": "4.0.9",
+    "sass": "1.86.0",
+    "stylelint": "16.16.0",
+    "stylelint-config-standard": "37.0.0",
+    "stylelint-config-standard-scss": "14.0.0",
+    "typed-scss-modules": "8.1.1"
   }
 }

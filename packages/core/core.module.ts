@@ -1,7 +1,6 @@
 import "reflect-metadata";
 import { Container, ContainerModule } from "inversify";
 
-import { CoreCounterStore } from "~core/stores/counter/counter.store";
 import { ICounterStore } from "~core/stores/counter/types";
 
 export const coreContainer = new Container({
@@ -10,7 +9,7 @@ export const coreContainer = new Container({
 });
 
 const coreModule = new ContainerModule((bind) => {
-  bind<ICounterStore>(ICounterStore.$).to(CoreCounterStore);
+  bind<ICounterStore>(ICounterStore.$).to(ICounterStore.useClass);
 });
 
 coreContainer.load(coreModule);

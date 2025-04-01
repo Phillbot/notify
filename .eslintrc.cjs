@@ -55,6 +55,7 @@ module.exports = {
   ],
 
   rules: {
+    'no-multiple-empty-lines': ['error', { max: 1 }],
     "@typescript-eslint/no-explicit-any": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-static-element-interactions": "off",

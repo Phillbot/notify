@@ -13,3 +13,5 @@ android/
 *.bundle
 *.keystore
 .DS_Store
+public
+release

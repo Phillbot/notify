@@ -16,7 +16,6 @@ export interface ICounterStore {
   getCounterSymbol(action: Action): string;
 }
 
-
 export const ICounterStore = createServiceToken<ICounterStore>({
   id: "ICounterStore",
   useClass: CoreCounterStore,

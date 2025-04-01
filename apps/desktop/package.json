@@ -1,0 +1,40 @@
+{
+  "name": "notify-desktop-client",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "copy:web": "cpy \"../web/dist/**/*\" public",
+    "prestart": "pnpm --filter notify-web build && pnpm run copy:web",
+    "start": "electron .",
+    "prebuild": "pnpm --filter notify-web build && pnpm run copy:web",
+    "build:mac": "pnpm run prebuild && electron-builder --mac",
+    "build:win": "pnpm run prebuild && electron-builder --win",
+    "build:linux": "pnpm run prebuild && electron-builder --linux"
+  },
+  "build": {
+    "appId": "com.notify.desktop",
+    "mac": {
+      "target": "dmg"
+    },
+    "win": {
+      "target": "nsis"
+    },
+    "linux": {
+      "target": "AppImage"
+    },
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "index.js",
+      "public/**/*"
+    ]
+  },
+  "devDependencies": {
+    "electron-builder": "26.0.12",
+    "electron": "35.1.2",
+    "cpy-cli": "5.0.0"
+  }
+}
