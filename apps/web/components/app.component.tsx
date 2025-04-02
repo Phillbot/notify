@@ -1,14 +1,15 @@
-import classNames from "classnames";
+import { PureComponent } from "react";
 
 import { Counter } from "./counter/counter.component";
 
-import styles from "./app.module.scss";
+import styles from './app.module.scss'
 
-export default function App() {
-  return (
-    <div className={classNames(styles.mySuperStyle, styles.mySuperStyleModify)}>
-      <div className={styles.mySuperStyleElement}>test</div>
-      <Counter />
-    </div>
-  );
+export class App extends PureComponent {
+  override render() {
+    return (
+      <div className={styles.app}>
+        <Counter />
+      </div>
+    );
+  }
 }

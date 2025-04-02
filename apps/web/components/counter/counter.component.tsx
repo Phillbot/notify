@@ -10,8 +10,10 @@ import styles from "./counter.module.scss";
 export class Counter extends Component {
   @resolve(ICounterStore.$)
   declare private readonly _counterStore: ICounterStore;
+
   override render() {
     const { count } = this._counterStore;
+    console.log('render');
 
     return (
       <div className={styles.counter}>
@@ -25,7 +27,11 @@ export class Counter extends Component {
     const { change, getCounterSymbol } = this._counterStore;
 
     return Object.values(Action).map((action) => (
-      <div key={action} className={styles.counterButtonPanelButton} onClick={() => change(action)}>
+      <div
+        key={action}
+        className={styles.counterButtonPanelButton}
+        onClick={() => change(action)}
+      >
         {getCounterSymbol(action)}
       </div>
     ));

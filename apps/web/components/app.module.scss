@@ -1,20 +1,7 @@
-.my-super-style {
-  $root: &;
-
-  color: #00c3ff;
-  font-weight: bold;
-  font-size: 28px;
-  padding: 20px;
-
-  &__element {
-    color: #ffffff;
-  }
-
-  &_modify {
-    color: red;
-
-    #{$root}__element {
-      color: green;
-    }
-  }
+.app {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100%;
 }
