@@ -25,6 +25,11 @@
     "desktop:build:mac": "pnpm --filter notify-desktop-client run build:mac",
     "desktop:build:win": "pnpm --filter notify-desktop-client run build:win",
     "desktop:build:linux": "pnpm --filter notify-desktop-client run build:linux",
+    "server:build": "pnpm --filter notify-nest-server exec nest build",
+    "server:start": "pnpm --filter notify-nest-server exec nest start",
+    "server:start:dev": "pnpm --filter notify-nest-server exec nest start --watch",
+    "server:start:debug": "pnpm --filter notify-nest-server exec nest start --debug --watch",
+    "server:start:prod": "pnpm --filter notify-nest-server exec node dist/main",
     "install:all": "pnpm install && cd apps/desktop && node node_modules/electron/install.js",
     "clean:all": "pnpm run clean:deep && pnpm run clean:builds",
     "clean:deep": "find . -type d -name 'node_modules' -prune -exec rm -rf '{}' + && find . -name 'pnpm-lock.yaml' -delete",
@@ -42,6 +47,11 @@
     "eslint-plugin-react": "7.37.4",
     "eslint-plugin-react-hooks": "5.2.0",
     "typescript": "5.8.2",
-    "vite": "5.0.0"
+    "vite": "5.0.0",
+    "globals": "16.0.0",
+    "ts-loader": "9.5.2",
+    "ts-node": "10.9.2",
+    "tsconfig-paths": "4.2.0",
+    "typescript-eslint": "8.20.0"
   }
 }
