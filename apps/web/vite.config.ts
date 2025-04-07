@@ -34,8 +34,12 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      "~core": resolve(__dirname, "../../packages/core"),
-      "~web-components": resolve(__dirname, "components")
+      "~core/utils": resolve(__dirname, "../../packages/core/shared/utils"),
+      "~core/types": resolve(__dirname, "../../packages/core/shared/types"),
+      "~core/di": resolve(__dirname, "../../packages/core/shared/di"),
+      "~core/react": resolve(__dirname, "../../packages/core/react"),
+      "~core/stores": resolve(__dirname, "../../packages/core/stores"),
+      "~web-components": resolve(__dirname, "../../apps/web/components")
     }
   }
 });

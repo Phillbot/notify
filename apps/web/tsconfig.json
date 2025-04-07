@@ -1,21 +1,13 @@
 {
-  "extends": "../../tsconfig.base.json",
+  "extends": [
+    "../../tsconfig.base.json"
+  ],
   "compilerOptions": {
     "jsx": "react-jsx",
-    "baseUrl": ".",
-    "paths": {
-      "~web-components/*": [
-        "components/*"
-      ],
-      "~core/*": [
-        "../../packages/core/*"
-      ],
-    }
   },
   "include": [
     ".",
-    "global.d.ts",
     "vite.config.ts",
-    "../../packages/*"
+    "../../packages/**/*",
   ]
 }

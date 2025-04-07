@@ -9,13 +9,37 @@
     "target": "ES2023",
     "sourceMap": true,
     "outDir": "./dist",
-    "baseUrl": "./",
+    "baseUrl": ".",
     "incremental": true,
     "skipLibCheck": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": false,
     "strictBindCallApply": false,
-    "noFallthroughCasesInSwitch": false
-  }
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "~core/utils": [
+        "../../packages/core/shared/utils"
+      ],
+      "~core/utils/*": [
+        "../../packages/core/shared/utils/*"
+      ],
+      "~core/types": [
+        "../../packages/core/shared/types"
+      ],
+      "~core/types/*": [
+        "../../packages/core/shared/types/*"
+      ],
+      "~core/di": [
+        "../../packages/core/shared/di"
+      ],
+      "~core/di/*": [
+        "../../packages/core/shared/di/*"
+      ],
+    }
+  },
+  "include": [
+    ".",
+    "../../packages/**/*",
+  ]
 }

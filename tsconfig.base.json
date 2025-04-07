@@ -21,8 +21,35 @@
     "useDefineForClassFields": false,
     "baseUrl": ".",
     "paths": {
-      "~core/*": [
-        "packages/core/*"
+      "~core/utils": [
+        "packages/core/shared/utils"
+      ],
+      "~core/utils/*": [
+        "packages/core/shared/utils/*"
+      ],
+      "~core/types": [
+        "packages/core/shared/types"
+      ],
+      "~core/types/*": [
+        "packages/core/shared/types/*"
+      ],
+      "~core/react": [
+        "packages/core/react"
+      ],
+      "~core/react/*": [
+        "packages/core/react/*"
+      ],
+      "~core/di": [
+        "packages/core/shared/di"
+      ],
+      "~core/di/*": [
+        "packages/core/shared/di/*"
+      ],
+      "~core/stores": [
+        "packages/core/stores"
+      ],
+      "~core/stores/*": [
+        "packages/core/stores/*"
       ],
       "~web-components/*": [
         "apps/web/components/*"
@@ -31,6 +58,7 @@
   },
   "include": [
     "apps/**/*",
-    "packages/**/*"
+    "packages/**/*",
+    "global.d.ts"
   ]
 }

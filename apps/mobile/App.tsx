@@ -3,7 +3,7 @@ import { observer } from 'mobx-react';
 import { resolve } from "inversify-react";
 import { Button, StyleSheet, Text, View } from 'react-native';
 
-import { Action, ICounterStore } from '~core/stores/counter/types';
+import { Action, ICounterStore } from '~core/stores/counter';
 
 @observer
 export class App extends Component {

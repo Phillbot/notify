@@ -1,7 +1,8 @@
 import { ContainerModule } from "inversify";
 
-import { coreContainer } from "~core/core.module"
-import { ICounterStore } from "~core/stores/counter/types";
+import { coreContainer } from "~core/di";
+
+import { ICounterStore } from "~core/stores/counter";
 
 import { WebCounterCore } from "~web-components/counter/counter.store";
 

@@ -2,13 +2,15 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { Provider } from "inversify-react";
 
+import { isDev } from "~core/utils";
+
 import { App } from "~web-components/app.component";
 
 import { webContainer } from "./web.module";
 
 import './reset.css'
 
-if (process.env.NODE_ENV === "development") {
+if (isDev()) {
   console.log("Hey dev! 🎯");
 }
 

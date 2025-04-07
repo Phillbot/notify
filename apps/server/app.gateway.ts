@@ -1,13 +1,27 @@
-import { WebSocketGateway, WebSocketServer, SubscribeMessage } from '@nestjs/websockets';
-import { Server, Socket } from 'socket.io';
+import { Injectable, OnModuleInit } from '@nestjs/common';
+import { WebSocketServer, WebSocket } from 'ws';
 
-@WebSocketGateway({ cors: true })
-export class AppGateway {
-  @WebSocketServer()
-  server: Server;
+import { isDev } from '~core/utils';
 
-  @SubscribeMessage('ping')
-  handlePing(_: Socket): string {
-    return 'pong';
+@Injectable()
+export class AppGateway implements OnModuleInit {
+  private wss: WebSocketServer;
+
+  onModuleInit() {
+
+    isDev
+
+    this.wss = new WebSocketServer({ port: 3001 });
+
+    this.wss.on('connection', (ws: WebSocket) => {
+      ws.on('message', (message: string) => {
+        const payload = message.toString();
+        const reply = {
+          from: 'server',
+          text: payload,
+        };
+        ws.send(JSON.stringify(reply));
+      });
+    });
   }
 }

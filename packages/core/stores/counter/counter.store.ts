@@ -5,7 +5,6 @@ import { ReadonlyRecord } from "~core/types";
 
 import { Action, ICounterStore } from "./types";
 
-
 @injectable()
 export class CoreCounterStore implements ICounterStore {
   @observable
@@ -32,7 +31,7 @@ export class CoreCounterStore implements ICounterStore {
     return this._count;
   }
 
-  readonly getCounterSymbol = (action: Action): string => {
+  getCounterSymbol = (action: Action): string => {
     const symbol: ReadonlyRecord<Action, string> = {
       [Action.Decrement]: "-",
       [Action.Increment]: "+",
