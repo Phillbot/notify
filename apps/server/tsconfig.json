@@ -1,45 +1,48 @@
 {
+  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
     "module": "commonjs",
-    "declaration": true,
-    "removeComments": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "allowSyntheticDefaultImports": true,
-    "target": "ES2023",
-    "sourceMap": true,
+    "moduleResolution": "node",
     "outDir": "./dist",
-    "baseUrl": ".",
-    "incremental": true,
-    "skipLibCheck": true,
-    "strictNullChecks": true,
-    "forceConsistentCasingInFileNames": true,
-    "noImplicitAny": false,
-    "strictBindCallApply": false,
-    "noFallthroughCasesInSwitch": false,
+    "baseUrl": "../..",
     "paths": {
+      "@/*": [
+        "apps/server/src/*"
+      ],
       "~core/utils": [
-        "../../packages/core/shared/utils"
+        "packages/core/shared/utils"
       ],
       "~core/utils/*": [
-        "../../packages/core/shared/utils/*"
+        "packages/core/shared/utils/*"
       ],
       "~core/types": [
-        "../../packages/core/shared/types"
+        "packages/core/shared/types"
       ],
       "~core/types/*": [
-        "../../packages/core/shared/types/*"
+        "packages/core/shared/types/*"
+      ],
+      "~core/react": [
+        "packages/core/react"
+      ],
+      "~core/react/*": [
+        "packages/core/react/*"
       ],
       "~core/di": [
-        "../../packages/core/shared/di"
+        "packages/core/shared/di"
       ],
       "~core/di/*": [
-        "../../packages/core/shared/di/*"
+        "packages/core/shared/di/*"
       ],
+      "~core/stores": [
+        "packages/core/stores"
+      ],
+      "~core/stores/*": [
+        "packages/core/stores/*"
+      ]
     }
   },
   "include": [
-    ".",
-    "../../packages/**/*",
+    "src/**/*",
+    "../../packages/**/*"
   ]
 }
