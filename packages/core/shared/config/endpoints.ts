@@ -52,5 +52,35 @@ export function getWebSocketUrl(options?: {
     return `ws://${hostname}:${PORTS.SERVER_WS}`;
   }
 
+  // For React Native: detect Android emulator
+  // Android emulator uses 10.0.2.2 to access host machine's localhost
+  // Check for React Native environment using global variables
+  const isReactNative = typeof navigator !== "undefined" && navigator.product === "ReactNative";
+
+  if (isReactNative) {
+    // In React Native, Platform is available globally
+    // We need to check if we're on Android
+    try {
+      // Check if Platform.OS is available in global scope
+      const platformOS = (globalThis as any).Platform?.OS ||
+        (global as any).Platform?.OS;
+
+      if (platformOS === "android") {
+        console.log("🤖 Detected Android - using 10.0.2.2 for WebSocket");
+        return `ws://10.0.2.2:${PORTS.SERVER_WS}`;
+      }
+    } catch (e) {
+      // Fallback: check user agent
+      const isAndroid =
+        typeof navigator.userAgent === "string" &&
+        navigator.userAgent.toLowerCase().includes("android");
+
+      if (isAndroid) {
+        console.log("🤖 Detected Android via UA - using 10.0.2.2 for WebSocket");
+        return `ws://10.0.2.2:${PORTS.SERVER_WS}`;
+      }
+    }
+  }
+
   return ENDPOINTS.WS_URL;
 }
