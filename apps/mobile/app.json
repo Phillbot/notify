@@ -17,8 +17,14 @@
     "android": {
       "adaptiveIcon": {
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.phillbot.notifymobileclient"
     },
-    "web": {}
+    "web": {},
+    "extra": {
+      "eas": {
+        "projectId": "bd866e3b-32ed-4be7-b2b3-fafe72de514a"
+      }
+    }
   }
 }

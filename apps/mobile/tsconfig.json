@@ -8,6 +8,46 @@
     "target": "ESNext",
     "module": "ESNext",
     "experimentalDecorators": true,
-    "emitDecoratorMetadata": true
-  }
+    "emitDecoratorMetadata": true,
+    "baseUrl": "../..",
+    "paths": {
+      "@/*": [
+        "apps/mobile/src/*"
+      ],
+      "~core/utils": [
+        "packages/core/shared/utils"
+      ],
+      "~core/utils/*": [
+        "packages/core/shared/utils/*"
+      ],
+      "~core/types": [
+        "packages/core/shared/types"
+      ],
+      "~core/types/*": [
+        "packages/core/shared/types/*"
+      ],
+      "~core/react": [
+        "packages/core/react"
+      ],
+      "~core/react/*": [
+        "packages/core/react/*"
+      ],
+      "~core/di": [
+        "packages/core/shared/di"
+      ],
+      "~core/di/*": [
+        "packages/core/shared/di/*"
+      ],
+      "~core/stores": [
+        "packages/core/stores"
+      ],
+      "~core/stores/*": [
+        "packages/core/stores/*"
+      ]
+    }
+  },
+  "include": [
+    "src/**/*",
+    "../../packages/**/*"
+  ]
 }

@@ -1,6 +1,6 @@
 import { ContainerModule } from "inversify";
 
-import { coreContainer } from "~core/core.module"
+import { coreContainer } from "~core/di";
 
 export const mobileContainer = coreContainer.createChild();
 
