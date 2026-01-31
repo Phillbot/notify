@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from "react";
 
 interface FitTextProps {
   children: React.ReactNode;
@@ -68,13 +68,10 @@ export function FitText({
       className={className}
       style={{
         ...style,
-        overflow: overflowHidden ? 'hidden' : undefined
+        overflow: overflowHidden ? "hidden" : undefined,
       }}
     >
-      <div
-        ref={textRef}
-        style={{ display: 'inline-block', whiteSpace: 'nowrap', lineHeight: 1.2 }}
-      >
+      <div ref={textRef} style={{ display: "inline-block", whiteSpace: "nowrap", lineHeight: 1.2 }}>
         {children}
       </div>
     </div>
