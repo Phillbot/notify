@@ -43,6 +43,10 @@ export function getWebSocketUrl(options?: {
   // If we are in a browser environment, use current host
   if (typeof window !== "undefined" && window.location) {
     const hostname = window.location.hostname;
+    // For Electron or file protocols where hostname is empty
+    if (!hostname) {
+      return ENDPOINTS.WS_URL;
+    }
     // For localhost, we keep it as is, but for IP-based access (e.g., --host),
     // we use the actual IP of the machine.
     return `ws://${hostname}:${PORTS.SERVER_WS}`;
