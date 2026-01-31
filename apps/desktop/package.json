@@ -1,14 +1,15 @@
 {
-  "name": "notify-desktop-client",
+  "name": "desktop",
   "version": "0.0.1",
   "private": true,
   "type": "module",
   "main": "index.js",
   "scripts": {
     "copy:web": "cpy \"../web/dist/**/*\" public",
-    "prestart": "pnpm --filter notify-web build && pnpm run copy:web",
+    "prestart": "pnpm --filter web build && pnpm run copy:web",
     "start": "electron .",
-    "prebuild": "pnpm --filter notify-web build && pnpm run copy:web",
+    "dev": "electron .",
+    "prebuild": "pnpm --filter web build && pnpm run copy:web",
     "build:mac": "pnpm run prebuild && electron-builder --mac",
     "build:win": "pnpm run prebuild && electron-builder --win",
     "build:linux": "pnpm run prebuild && electron-builder --linux"

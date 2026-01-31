@@ -86,7 +86,7 @@ importers:
       '@babel/runtime':
         specifier: 7.27.0
         version: 7.27.0
-      '@notify/core':
+      core:
         specifier: workspace:*
         version: link:../../packages/core
       expo:
@@ -150,7 +150,7 @@ importers:
       '@nestjs/websockets':
         specifier: 11.0.12
         version: 11.0.12(@nestjs/common@11.0.1(reflect-metadata@0.2.2)(rxjs@7.8.2))(@nestjs/core@11.0.1)(@nestjs/platform-socket.io@11.0.12)(reflect-metadata@0.2.2)(rxjs@7.8.2)
-      '@notify/core':
+      core:
         specifier: workspace:*
         version: link:../../packages/core
       reflect-metadata:
@@ -187,12 +187,12 @@ importers:
 
   apps/web:
     dependencies:
-      '@notify/core':
-        specifier: workspace:*
-        version: link:../../packages/core
       classnames:
         specifier: 2.5.1
         version: 2.5.1
+      core:
+        specifier: workspace:*
+        version: link:../../packages/core
       inversify:
         specifier: 6.2.2
         version: 6.2.2(reflect-metadata@0.2.2)

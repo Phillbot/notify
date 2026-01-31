@@ -1,11 +1,12 @@
 {
-  "name": "notify-mobile-client",
+  "name": "mobile",
   "version": "0.0.1",
   "private": true,
   "type": "module",
   "main": "src/index.ts",
   "scripts": {
     "start": "expo start",
+    "dev": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
@@ -17,7 +18,7 @@
   },
   "dependencies": {
     "@babel/runtime": "7.27.0",
-    "@notify/core": "workspace:*",
+    "core": "workspace:*",
     "expo": "~52.0.41",
     "expo-status-bar": "~2.0.1",
     "react": "18.3.1",

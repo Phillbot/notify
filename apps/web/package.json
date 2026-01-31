@@ -1,5 +1,5 @@
 {
-  "name": "notify-web-client",
+  "name": "web",
   "version": "0.0.1",
   "private": true,
   "type": "module",
@@ -8,8 +8,8 @@
     "build": "vite build",
     "preview": "vite preview",
     "clean:types": "find src -name '*.module.scss.d.ts' -delete",
-    "lint:styles": "stylelint '**/*.{scss,css}'",
-    "format:styles": "stylelint '**/*.{scss,css}' --fix"
+    "lint": "stylelint '**/*.{scss,css}'",
+    "format": "stylelint '**/*.{scss,css}' --fix"
   },
   "peerDependencies": {
     "classnames": "2.5.1",
@@ -22,7 +22,7 @@
     "rxjs": "7.8.2"
   },
   "dependencies": {
-    "@notify/core": "workspace:*",
+    "core": "workspace:*",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
