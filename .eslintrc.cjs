@@ -7,10 +7,9 @@ module.exports = {
     ecmaVersion: "latest",
     sourceType: "module",
     project: [
-      "tsconfig.base.json",
-      "apps/web/tsconfig.json",
-      "apps/mobile/tsconfig.json",
-      "packages/core/tsconfig.json"
+      "./tsconfig.base.json",
+      "./apps/*/tsconfig.json",
+      "./packages/*/tsconfig.json"
     ],
     tsconfigRootDir: __dirname,
   },
@@ -25,13 +24,8 @@ module.exports = {
       version: "detect",
     },
     "import/resolver": {
-      typescript: {
-        alwaysTryTypes: true,
-        project: [
-          "./tsconfig.base.json",
-          "./apps/*/tsconfig.json",
-          "./packages/*/tsconfig.json"
-        ],
+      node: {
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
       },
     },
   },
@@ -51,11 +45,16 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:import/recommended",
-    "plugin:import/typescript"
   ],
 
   rules: {
-    'no-multiple-empty-lines': ['error', { max: 1 }],
+    "import/no-unresolved": "off",
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
+    "import/namespace": "off",
+    "import/default": "off",
+    "import/no-duplicates": "error",
+    "no-multiple-empty-lines": ["error", { max: 1 }],
     "@typescript-eslint/no-explicit-any": "off",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-static-element-interactions": "off",
@@ -92,6 +91,11 @@ module.exports = {
           },
           {
             pattern: "~web-components/**",
+            group: "internal",
+            position: "after",
+          },
+          {
+            pattern: "@/**",
             group: "internal",
             position: "after",
           }

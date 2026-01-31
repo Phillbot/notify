@@ -9,6 +9,12 @@ export const sharedViteConfig: UserConfig = {
     modules: {
       localsConvention: "camelCaseOnly",
     },
+    preprocessorOptions: {
+      scss: {
+        api: "modern-compiler",
+        quietDeps: true,
+      },
+    },
   },
   build: {
     sourcemap: isDev,

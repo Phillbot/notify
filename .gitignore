@@ -3,6 +3,7 @@ dist
 .vite
 *.md.scss.d.ts
 *.module.scss.d.ts
+apps/web/src/__generated__
 *.log
 .idea/
 .vscode/
