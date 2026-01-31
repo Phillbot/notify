@@ -6,11 +6,7 @@ module.exports = {
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
-    project: [
-      "./tsconfig.base.json",
-      "./apps/*/tsconfig.json",
-      "./packages/*/tsconfig.json"
-    ],
+    project: ["./tsconfig.base.json", "./apps/*/tsconfig.json", "./packages/*/tsconfig.json"],
     tsconfigRootDir: __dirname,
   },
 
@@ -30,13 +26,7 @@ module.exports = {
     },
   },
 
-  plugins: [
-    "react",
-    "react-hooks",
-    "jsx-a11y",
-    "@typescript-eslint",
-    "import"
-  ],
+  plugins: ["react", "react-hooks", "jsx-a11y", "@typescript-eslint", "import"],
 
   extends: [
     "eslint:recommended",
@@ -69,15 +59,7 @@ module.exports = {
     "import/order": [
       "error",
       {
-        groups: [
-          "builtin",
-          "external",
-          "internal",
-          ["parent", "sibling", "index"],
-          "object",
-          "type",
-          "unknown"
-        ],
+        groups: ["builtin", "external", "internal", ["parent", "sibling", "index"], "object", "type", "unknown"],
         pathGroups: [
           {
             pattern: "**/*.module.scss",
@@ -98,7 +80,7 @@ module.exports = {
             pattern: "@/**",
             group: "internal",
             position: "after",
-          }
+          },
         ],
         pathGroupsExcludedImportTypes: ["builtin"],
         "newlines-between": "always-and-inside-groups",
@@ -107,7 +89,7 @@ module.exports = {
           caseInsensitive: true,
         },
       },
-    ]
+    ],
   },
 
   overrides: [

@@ -18,7 +18,7 @@ export function compare<T>(a: T, b: T): boolean {
  */
 export function createComparator<T>(
   selector: (item: T) => number | string,
-  ascending: boolean = true
+  ascending: boolean = true,
 ): (a: T, b: T) => number {
   return (a, b) => {
     const aVal = selector(a);
@@ -35,9 +35,7 @@ export function createComparator<T>(
  * @param comparator - The comparator to reverse
  * @returns A reversed comparator
  */
-export function reverseComparator<T>(
-  comparator: (a: T, b: T) => number
-): (a: T, b: T) => number {
+export function reverseComparator<T>(comparator: (a: T, b: T) => number): (a: T, b: T) => number {
   return (a, b) => comparator(b, a);
 }
 
@@ -47,9 +45,7 @@ export function reverseComparator<T>(
  * @param comparators - List of comparator functions
  * @returns A chained comparator that applies all provided ones
  */
-export function chainComparators<T>(
-  ...comparators: Array<(a: T, b: T) => number>
-): (a: T, b: T) => number {
+export function chainComparators<T>(...comparators: Array<(a: T, b: T) => number>): (a: T, b: T) => number {
   return (a, b) => {
     for (const compare of comparators) {
       const result = compare(a, b);

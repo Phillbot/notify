@@ -1,6 +1,6 @@
-import { Component } from 'react';
+import { Component } from "react";
 
-import { DisposableStore, IDisposable } from '~core/utils';
+import { DisposableStore, IDisposable } from "~core/utils";
 
 /**
  * Base class for React Class Components that manage disposable resources.

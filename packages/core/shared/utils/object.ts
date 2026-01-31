@@ -5,7 +5,7 @@
  * @returns True if the value is a plain object
  */
 export function isPlainObject(value: unknown): value is Record<string, unknown> {
-  return typeof value === 'object' && value !== null && !Array.isArray(value);
+  return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
 /**
@@ -32,9 +32,7 @@ export function isShallowEqualObject<T extends object>(a: T, b: T): boolean {
  * @returns A new object without undefined properties
  */
 export function removeUndefined<T extends object>(obj: T): Partial<T> {
-  return Object.fromEntries(
-    Object.entries(obj).filter(([, value]) => value !== undefined)
-  ) as Partial<T>;
+  return Object.fromEntries(Object.entries(obj).filter(([, value]) => value !== undefined)) as Partial<T>;
 }
 
 /**
@@ -48,10 +46,7 @@ export function mergeObjects<T extends object, U extends object>(target: T, sour
   const result: any = { ...target };
 
   for (const key in source) {
-    if (
-      isPlainObject(source[key]) &&
-      isPlainObject(result[key])
-    ) {
+    if (isPlainObject(source[key]) && isPlainObject(result[key])) {
       result[key] = mergeObjects(result[key], source[key]);
     } else {
       result[key] = source[key];
@@ -121,8 +116,8 @@ export function deepClone<T>(obj: T): T {
  * @returns True if the nested key exists
  */
 export function hasNestedKey(obj: object, path: string): boolean {
-  return path.split('.').every((key) => {
-    if (typeof obj === 'object' && obj !== null && key in obj) {
+  return path.split(".").every((key) => {
+    if (typeof obj === "object" && obj !== null && key in obj) {
       obj = (obj as any)[key];
       return true;
     }
@@ -137,17 +132,20 @@ export function hasNestedKey(obj: object, path: string): boolean {
  * @param prefix - Internal prefix for recursion
  * @returns A new flattened object
  */
-export function flattenObject(obj: Record<string, any>, prefix = ''): Record<string, any> {
-  return Object.keys(obj).reduce((acc, key) => {
-    const prefixedKey = prefix ? `${prefix}.${key}` : key;
-    const value = obj[key];
-    if (typeof value === 'object' && value !== null && !Array.isArray(value)) {
-      Object.assign(acc, flattenObject(value, prefixedKey));
-    } else {
-      acc[prefixedKey] = value;
-    }
-    return acc;
-  }, {} as Record<string, any>);
+export function flattenObject(obj: Record<string, any>, prefix = ""): Record<string, any> {
+  return Object.keys(obj).reduce(
+    (acc, key) => {
+      const prefixedKey = prefix ? `${prefix}.${key}` : key;
+      const value = obj[key];
+      if (typeof value === "object" && value !== null && !Array.isArray(value)) {
+        Object.assign(acc, flattenObject(value, prefixedKey));
+      } else {
+        acc[prefixedKey] = value;
+      }
+      return acc;
+    },
+    {} as Record<string, any>,
+  );
 }
 
 /**
@@ -159,7 +157,7 @@ export function flattenObject(obj: Record<string, any>, prefix = ''): Record<str
 export function deepFreeze<T>(obj: T): T {
   Object.getOwnPropertyNames(obj).forEach((prop) => {
     const value = (obj as any)[prop];
-    if (value && typeof value === 'object') {
+    if (value && typeof value === "object") {
       deepFreeze(value);
     }
   });

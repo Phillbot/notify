@@ -11,9 +11,7 @@ export function encodeSvgToBase64(svg: string): string {
  * @param svg - The raw SVG string.
  */
 export function encodeSvgToUri(svg: string): string {
-  const encoded = encodeURIComponent(svg)
-    .replace(/'/g, '%27')
-    .replace(/"/g, '%22');
+  const encoded = encodeURIComponent(svg).replace(/'/g, "%27").replace(/"/g, "%22");
   return `data:image/svg+xml,${encoded}`;
 }
 

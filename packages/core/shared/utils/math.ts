@@ -29,7 +29,7 @@ export function round(value: number, decimals: number = 2): number {
  * @returns True if the value is a finite number
  */
 export function isFiniteNumber(value: unknown): value is number {
-  return typeof value === 'number' && isFinite(value);
+  return typeof value === "number" && isFinite(value);
 }
 
 /**
@@ -39,7 +39,7 @@ export function isFiniteNumber(value: unknown): value is number {
  * @returns True if the value is NaN
  */
 export function isNaNValue(value: unknown): boolean {
-  return typeof value === 'number' && isNaN(value);
+  return typeof value === "number" && isNaN(value);
 }
 
 /**

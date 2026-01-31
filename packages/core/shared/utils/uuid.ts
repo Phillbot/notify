@@ -4,12 +4,12 @@
  * @returns A randomly generated UUID string.
  */
 export function generateUUID(): string {
-  if (typeof crypto !== 'undefined' && crypto.randomUUID) {
+  if (typeof crypto !== "undefined" && crypto.randomUUID) {
     return crypto.randomUUID(); // Browser and modern Node.js
   } else {
-    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, (c) => {
+    return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, (c) => {
       const r = (Math.random() * 16) | 0;
-      return (c === 'x' ? r : (r & 0x3) | 0x8).toString(16);
+      return (c === "x" ? r : (r & 0x3) | 0x8).toString(16);
     });
   }
 }
@@ -21,17 +21,17 @@ export function generateUUID(): string {
  * @returns A random string ID.
  */
 export function generateNanoId(size = 21): string {
-  const chars = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+  const chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
 
   // Use crypto if available
-  if (typeof crypto !== 'undefined' && crypto.getRandomValues) {
+  if (typeof crypto !== "undefined" && crypto.getRandomValues) {
     const array = new Uint8Array(size);
     crypto.getRandomValues(array);
-    return Array.from(array, byte => chars[byte % chars.length]).join('');
+    return Array.from(array, (byte) => chars[byte % chars.length]).join("");
   }
 
   // Fallback to Math.random() if crypto is not available
-  let result = '';
+  let result = "";
   const charactersLength = chars.length;
   for (let i = 0; i < size; i++) {
     result += chars.charAt(Math.floor(Math.random() * charactersLength));
@@ -44,7 +44,7 @@ export function generateNanoId(size = 21): string {
  * @param prefix - Optional prefix for the ID.
  * @returns A unique string ID with the given prefix.
  */
-export function uniqueId(prefix = ''): string {
+export function uniqueId(prefix = ""): string {
   const id = generateNanoId(16);
   return `${prefix}${id}`;
 }

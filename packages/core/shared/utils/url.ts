@@ -48,7 +48,7 @@ export function objectToQueryString(params: Record<string, string | number | boo
   return Object.entries(params)
     .filter(([_, v]) => v !== undefined && v !== null)
     .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(String(v))}`)
-    .join('&');
+    .join("&");
 }
 
 /**
@@ -56,7 +56,7 @@ export function objectToQueryString(params: Record<string, string | number | boo
  * @param queryString - The query string to parse (e.g., '?foo=1&bar=2').
  */
 export function queryStringToObject(queryString: string): Record<string, string> {
-  const query = queryString.startsWith('?') ? queryString.slice(1) : queryString;
+  const query = queryString.startsWith("?") ? queryString.slice(1) : queryString;
   const result: Record<string, string> = {};
   for (const [key, value] of new URLSearchParams(query)) {
     result[key] = value;

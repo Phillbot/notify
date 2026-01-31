@@ -88,16 +88,16 @@ export function uniqBy<T>(arr: T[], selector: (item: T) => any): T[] {
  * @param keySelector - Function to select the key
  * @returns A record of grouped arrays
  */
-export function groupBy<T, K extends string | number | symbol>(
-  arr: T[],
-  keySelector: (item: T) => K
-): Record<K, T[]> {
-  return arr.reduce((acc, item) => {
-    const key = keySelector(item);
-    if (!acc[key]) acc[key] = [];
-    acc[key].push(item);
-    return acc;
-  }, {} as Record<K, T[]>);
+export function groupBy<T, K extends string | number | symbol>(arr: T[], keySelector: (item: T) => K): Record<K, T[]> {
+  return arr.reduce(
+    (acc, item) => {
+      const key = keySelector(item);
+      if (!acc[key]) acc[key] = [];
+      acc[key].push(item);
+      return acc;
+    },
+    {} as Record<K, T[]>,
+  );
 }
 
 /**
@@ -107,16 +107,13 @@ export function groupBy<T, K extends string | number | symbol>(
  * @param predicate - Function to test each element
  * @returns A tuple: [items that match, items that don't match]
  */
-export function partition<T>(
-  arr: T[],
-  predicate: (item: T) => boolean
-): [T[], T[]] {
+export function partition<T>(arr: T[], predicate: (item: T) => boolean): [T[], T[]] {
   return arr.reduce<[T[], T[]]>(
     (acc, item) => {
       predicate(item) ? acc[0].push(item) : acc[1].push(item);
       return acc;
     },
-    [[], []]
+    [[], []],
   );
 }
 
@@ -126,6 +123,6 @@ export function partition<T>(
  * @param arr - The array to compact
  * @returns A new array without falsy values
  */
-export function compact<T>(arr: (T | undefined | null | false | '' | 0)[]): T[] {
+export function compact<T>(arr: (T | undefined | null | false | "" | 0)[]): T[] {
   return arr.filter(Boolean) as T[];
 }

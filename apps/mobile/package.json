@@ -8,6 +8,8 @@
     "start": "expo start",
     "dev": "expo start",
     "android": "expo start --android",
+    "android:emulator": "$ANDROID_HOME/emulator/emulator -avd Medium_Phone_API_36.1 -netdelay none -netspeed full",
+    "android:with-emulator": "pnpm run android:emulator & sleep 15 && expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
     "android:build": "expo run:android",
@@ -25,23 +27,24 @@
     "expo": "catalog:mobile",
     "expo-status-bar": "catalog:mobile",
     "expo-system-ui": "catalog:mobile",
-    "react": "catalog:react18",
-    "react-native": "catalog:mobile",
-    "mobx-react": "catalog:",
-    "mobx-react-lite": "catalog:",
-    "mobx": "catalog:",
     "inversify": "catalog:",
     "inversify-react": "catalog:",
+    "mobx": "catalog:",
+    "mobx-react": "catalog:",
+    "mobx-react-lite": "catalog:",
+    "react": "catalog:react18",
+    "react-dom": "catalog:react18",
+    "react-native": "catalog:mobile",
+    "react-native-web": "catalog:mobile",
     "reflect-metadata": "catalog:",
     "rxjs": "catalog:",
-    "socket.io-client": "catalog:",
-    "react-native-web": "catalog:mobile",
-    "react-dom": "catalog:react18"
+    "socket.io-client": "catalog:"
   },
   "devDependencies": {
-    "babel-preset-expo": "catalog:mobile",
-    "babel-plugin-transform-typescript-metadata": "catalog:",
     "@babel/core": "catalog:",
-    "@types/react": "catalog:react18"
+    "@types/react": "catalog:react18",
+    "babel-plugin-module-resolver": "^5.0.2",
+    "babel-plugin-transform-typescript-metadata": "catalog:",
+    "babel-preset-expo": "catalog:mobile"
   }
 }

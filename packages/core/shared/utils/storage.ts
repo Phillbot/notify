@@ -4,7 +4,7 @@
  * @param value - The value to store.
  */
 export function saveToStorage(key: string, value: unknown): void {
-  if (typeof window === 'undefined') return;
+  if (typeof window === "undefined") return;
   localStorage.setItem(key, JSON.stringify(value));
 }
 
@@ -14,7 +14,7 @@ export function saveToStorage(key: string, value: unknown): void {
  * @returns The parsed value or null if not found or parsing fails.
  */
 export function getFromStorage<T = unknown>(key: string): T | null {
-  if (typeof window === 'undefined') return null;
+  if (typeof window === "undefined") return null;
   const item = localStorage.getItem(key);
   try {
     return item ? JSON.parse(item) : null;
@@ -28,7 +28,7 @@ export function getFromStorage<T = unknown>(key: string): T | null {
  * @param key - The key to remove.
  */
 export function removeFromStorage(key: string): void {
-  if (typeof window === 'undefined') return;
+  if (typeof window === "undefined") return;
   localStorage.removeItem(key);
 }
 
@@ -36,6 +36,6 @@ export function removeFromStorage(key: string): void {
  * Clears all keys from localStorage.
  */
 export function clearStorage(): void {
-  if (typeof window === 'undefined') return;
+  if (typeof window === "undefined") return;
   localStorage.clear();
 }

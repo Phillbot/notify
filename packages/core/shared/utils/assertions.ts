@@ -7,7 +7,7 @@
  */
 export function assertDefined<T>(value: T, message?: string): NonNullable<T> {
   if (value === null || value === undefined) {
-    throw new Error(message ?? 'Expected value to be defined, but received null or undefined.');
+    throw new Error(message ?? "Expected value to be defined, but received null or undefined.");
   }
   return value as NonNullable<T>;
 }
@@ -20,7 +20,7 @@ export function assertDefined<T>(value: T, message?: string): NonNullable<T> {
  */
 export function assert(condition: unknown, message?: string): asserts condition {
   if (!condition) {
-    throw new Error(message ?? 'Assertion failed');
+    throw new Error(message ?? "Assertion failed");
   }
 }
 

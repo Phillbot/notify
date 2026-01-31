@@ -7,4 +7,4 @@ export const Main = () => (
   <Provider container={mobileContainer}>
     <App />
   </Provider>
-)
+);

@@ -12,7 +12,7 @@ export function getNowISO(): string {
  * @returns The formatted string
  */
 export function formatDate(date: Date): string {
-  return date.toISOString().split('T')[0];
+  return date.toISOString().split("T")[0];
 }
 
 /**
@@ -63,9 +63,9 @@ export function differenceInDays(a: Date, b: Date): number {
  */
 export function formatReadableDate(date: Date): string {
   return date.toLocaleDateString(undefined, {
-    year: 'numeric',
-    month: 'short',
-    day: 'numeric',
+    year: "numeric",
+    month: "short",
+    day: "numeric",
   });
 }
 
@@ -95,11 +95,7 @@ export function isFuture(date: Date): boolean {
  * Checks if two dates fall on the same day.
  */
 export function isSameDay(a: Date, b: Date): boolean {
-  return (
-    a.getDate() === b.getDate() &&
-    a.getMonth() === b.getMonth() &&
-    a.getFullYear() === b.getFullYear()
-  );
+  return a.getDate() === b.getDate() && a.getMonth() === b.getMonth() && a.getFullYear() === b.getFullYear();
 }
 
 /**
@@ -141,31 +137,31 @@ export function parseDate(input: string): Date | null {
 /**
  * Returns a human-readable relative time string (e.g., "2 minutes ago").
  */
-export function getTimeAgo(date: Date, mode: 'strict' | 'approx' = 'strict'): string {
+export function getTimeAgo(date: Date, mode: "strict" | "approx" = "strict"): string {
   let seconds = Math.floor((Date.now() - date.getTime()) / 1000);
 
   const baseIntervals: [number, string][] = [
-    [60, 'second'],
-    [60, 'minute'],
-    [24, 'hour'],
-    [7, 'day'],
+    [60, "second"],
+    [60, "minute"],
+    [24, "hour"],
+    [7, "day"],
   ];
 
   const strictIntervals: [number, string][] = [
     ...baseIntervals,
-    [4, 'week'],
-    [12, 'month'],
-    [Number.POSITIVE_INFINITY, 'year'],
+    [4, "week"],
+    [12, "month"],
+    [Number.POSITIVE_INFINITY, "year"],
   ];
 
   const approxIntervals: [number, string][] = [
     ...baseIntervals,
-    [4.34524, 'week'],
-    [12, 'month'],
-    [Number.POSITIVE_INFINITY, 'year'],
+    [4.34524, "week"],
+    [12, "month"],
+    [Number.POSITIVE_INFINITY, "year"],
   ];
 
-  const intervals = mode === 'approx' ? approxIntervals : strictIntervals;
+  const intervals = mode === "approx" ? approxIntervals : strictIntervals;
 
   let i = 0;
   while (seconds >= intervals[i][0] && i < intervals.length - 1) {
@@ -174,6 +170,6 @@ export function getTimeAgo(date: Date, mode: 'strict' | 'approx' = 'strict'): st
   }
 
   const count = Math.floor(seconds);
-  const label = intervals[i][1] + (count !== 1 ? 's' : '');
+  const label = intervals[i][1] + (count !== 1 ? "s" : "");
   return `${count} ${label} ago`;
 }

@@ -16,14 +16,8 @@ export function wait(ms: number): Promise<void> {
  * @param message - Optional timeout message
  * @returns A promise that resolves or rejects accordingly
  */
-export function withTimeout<T>(
-  promise: Promise<T>,
-  ms: number,
-  message = 'Timeout exceeded'
-): Promise<T> {
-  const timeout = new Promise<never>((_, reject) =>
-    setTimeout(() => reject(new Error(message)), ms)
-  );
+export function withTimeout<T>(promise: Promise<T>, ms: number, message = "Timeout exceeded"): Promise<T> {
+  const timeout = new Promise<never>((_, reject) => setTimeout(() => reject(new Error(message)), ms));
   return Promise.race([promise, timeout]);
 }
 
@@ -35,11 +29,7 @@ export function withTimeout<T>(
  * @param delay - Delay between retries (ms)
  * @returns The result of the function or throws after final failure
  */
-export async function retry<T>(
-  fn: () => Promise<T>,
-  retries = 3,
-  delay = 1000
-): Promise<T> {
+export async function retry<T>(fn: () => Promise<T>, retries = 3, delay = 1000): Promise<T> {
   let lastError: unknown;
   for (let i = 0; i < retries; i++) {
     try {
@@ -60,16 +50,12 @@ export async function retry<T>(
  * @param timeout - Optional timeout in milliseconds
  * @returns A promise that resolves when the condition is true
  */
-export async function waitFor(
-  condition: () => boolean,
-  interval = 100,
-  timeout = 5000
-): Promise<void> {
+export async function waitFor(condition: () => boolean, interval = 100, timeout = 5000): Promise<void> {
   const start = Date.now();
   return new Promise((resolve, reject) => {
     const check = () => {
       if (condition()) return resolve();
-      if (Date.now() - start >= timeout) return reject(new Error('Timeout exceeded'));
+      if (Date.now() - start >= timeout) return reject(new Error("Timeout exceeded"));
       setTimeout(check, interval);
     };
     check();
@@ -83,9 +69,9 @@ export async function waitFor(
  * @returns A record with either 'fulfilled' or 'rejected' results
  */
 export async function allSettledMap<T extends Record<string, Promise<any>>>(
-  entries: T
+  entries: T,
 ): Promise<{
-  [K in keyof T]: { status: 'fulfilled'; value: Awaited<T[K]> } | { status: 'rejected'; reason: unknown };
+  [K in keyof T]: { status: "fulfilled"; value: Awaited<T[K]> } | { status: "rejected"; reason: unknown };
 }> {
   const keys = Object.keys(entries) as (keyof T)[];
   const results = await Promise.allSettled(Object.values(entries));

@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-import { DisposableStore, IDisposable } from '~core/utils';
+import { DisposableStore, IDisposable } from "~core/utils";
 
 /**
  * Hook to manage a Disposable resource.
@@ -8,15 +8,15 @@ import { DisposableStore, IDisposable } from '~core/utils';
  * The instance is disposed when the component unmounts.
  */
 export function useDisposable<T extends IDisposable>(factory: () => T): T {
-    const [instance] = useState(factory);
+  const [instance] = useState(factory);
 
-    useEffect(() => {
-        return () => {
-            instance.dispose();
-        };
-    }, [instance]);
+  useEffect(() => {
+    return () => {
+      instance.dispose();
+    };
+  }, [instance]);
 
-    return instance;
+  return instance;
 }
 
 /**
@@ -25,13 +25,13 @@ export function useDisposable<T extends IDisposable>(factory: () => T): T {
  * that should be cleaned up when the component unmounts.
  */
 export function useDisposableStore(): DisposableStore {
-    const [store] = useState(() => new DisposableStore());
+  const [store] = useState(() => new DisposableStore());
 
-    useEffect(() => {
-        return () => {
-            store.dispose();
-        };
-    }, [store]);
+  useEffect(() => {
+    return () => {
+      store.dispose();
+    };
+  }, [store]);
 
-    return store;
+  return store;
 }

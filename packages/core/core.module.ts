@@ -8,4 +8,3 @@ const coreModule = new ContainerModule((bind) => {
 });
 
 coreContainer.load(coreModule);
-

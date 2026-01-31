@@ -27,6 +27,12 @@
       "~core/types/*": [
         "packages/core/shared/types/*"
       ],
+      "~core/config": [
+        "packages/core/shared/config"
+      ],
+      "~core/config/*": [
+        "packages/core/shared/config/*"
+      ],
       "~core/react": [
         "packages/core/react"
       ],

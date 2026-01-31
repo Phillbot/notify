@@ -17,7 +17,7 @@ export function isHexColor(color: string): boolean {
  * @returns The hex color code as a string, e.g., #FF5733.
  */
 export function rgbToHex(r: number, g: number, b: number): string {
-  return `#${(1 << 24 | (r << 16) | (g << 8) | b).toString(16).slice(1).toUpperCase()}`;
+  return `#${((1 << 24) | (r << 16) | (g << 8) | b).toString(16).slice(1).toUpperCase()}`;
 }
 
 /**
@@ -32,9 +32,14 @@ export function hexToRgb(hex: string): { r: number; g: number; b: number } | nul
     return null;
   }
 
-  const [r, g, b] = result[1].length === 6
-    ? [parseInt(result[1].slice(0, 2), 16), parseInt(result[1].slice(2, 4), 16), parseInt(result[1].slice(4, 6), 16)]
-    : [parseInt(result[1].charAt(0) + result[1].charAt(0), 16), parseInt(result[1].charAt(1) + result[1].charAt(1), 16), parseInt(result[1].charAt(2) + result[1].charAt(2), 16)];
+  const [r, g, b] =
+    result[1].length === 6
+      ? [parseInt(result[1].slice(0, 2), 16), parseInt(result[1].slice(2, 4), 16), parseInt(result[1].slice(4, 6), 16)]
+      : [
+          parseInt(result[1].charAt(0) + result[1].charAt(0), 16),
+          parseInt(result[1].charAt(1) + result[1].charAt(1), 16),
+          parseInt(result[1].charAt(2) + result[1].charAt(2), 16),
+        ];
 
   return { r, g, b };
 }
@@ -75,17 +80,29 @@ export function hslToRgb(h: number, s: number, l: number): { r: number; g: numbe
 
   let r: number, g: number, b: number;
   if (h < 60) {
-    r = c; g = x; b = 0;
+    r = c;
+    g = x;
+    b = 0;
   } else if (h < 120) {
-    r = x; g = c; b = 0;
+    r = x;
+    g = c;
+    b = 0;
   } else if (h < 180) {
-    r = 0; g = c; b = x;
+    r = 0;
+    g = c;
+    b = x;
   } else if (h < 240) {
-    r = 0; g = x; b = c;
+    r = 0;
+    g = x;
+    b = c;
   } else if (h < 300) {
-    r = x; g = 0; b = c;
+    r = x;
+    g = 0;
+    b = c;
   } else {
-    r = c; g = 0; b = x;
+    r = c;
+    g = 0;
+    b = x;
   }
 
   r = Math.round((r + m) * 255);
@@ -114,11 +131,7 @@ export function rgbToHsl(r: number, g: number, b: number): { h: number; s: numbe
   const s = max === min ? 0 : (max - min) / (max + min);
   const l = h;
 
-  const hue = max === r
-    ? (g - b) / (max - min)
-    : max === g
-      ? 2 + (b - r) / (max - min)
-      : 4 + (r - g) / (max - min);
+  const hue = max === r ? (g - b) / (max - min) : max === g ? 2 + (b - r) / (max - min) : 4 + (r - g) / (max - min);
 
   return {
     h: Math.round((hue * 60 + 360) % 360),
@@ -134,10 +147,10 @@ export function rgbToHsl(r: number, g: number, b: number): { h: number; s: numbe
  * @returns True if the string is a valid CSS color name, false otherwise.
  */
 export function isCssColorName(color: string): boolean {
-  const canvas = document.createElement('canvas');
-  const context = canvas.getContext('2d');
+  const canvas = document.createElement("canvas");
+  const context = canvas.getContext("2d");
   if (!context) return false;
 
   context.fillStyle = color;
-  return context.fillStyle !== '';
+  return context.fillStyle !== "";
 }

@@ -2,28 +2,28 @@
  * Returns the current NODE_ENV value.
  */
 export function getEnv(): string {
-  return process.env.NODE_ENV || 'development';
+  return process.env.NODE_ENV || "development";
 }
 
 /**
  * Checks if the current environment is development.
  */
 export function isDev(): boolean {
-  return getEnv() === 'development';
+  return getEnv() === "development";
 }
 
 /**
  * Checks if the current environment is production.
  */
 export function isProd(): boolean {
-  return getEnv() === 'production';
+  return getEnv() === "production";
 }
 
 /**
  * Checks if the current environment is test.
  */
 export function isTest(): boolean {
-  return getEnv() === 'test';
+  return getEnv() === "test";
 }
 
 /**

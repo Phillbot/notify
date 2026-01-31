@@ -34,7 +34,7 @@ export function isValidPhoneNumber(phone: string): boolean {
  * @returns True if the value is a non-empty string, false otherwise.
  */
 export function isNonEmptyString(value: string): boolean {
-  return typeof value === 'string' && value.trim() !== '';
+  return typeof value === "string" && value.trim() !== "";
 }
 
 /**
@@ -43,7 +43,7 @@ export function isNonEmptyString(value: string): boolean {
  * @returns True if the value is a number greater than or equal to zero, false otherwise.
  */
 export function isPositiveNumber(value: number): boolean {
-  return typeof value === 'number' && value >= 0;
+  return typeof value === "number" && value >= 0;
 }
 
 /**
@@ -63,5 +63,5 @@ export function isValidDate(value: string): boolean {
  * @returns True if the object contains all the required properties, false otherwise.
  */
 export function hasRequiredProperties<T extends object>(obj: T, requiredProps: string[]): boolean {
-  return requiredProps.every(prop => prop in obj);
+  return requiredProps.every((prop) => prop in obj);
 }

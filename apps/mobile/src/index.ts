@@ -1,6 +1,7 @@
-import { registerRootComponent } from 'expo';
+import "reflect-metadata";
+import { registerRootComponent } from "expo";
 
-import { Main } from './main';
+import { Main } from "./main";
 
 // registerRootComponent calls AppRegistry.registerComponent('main', () => App);
 // It also ensures that whether you load the app in Expo Go or in a native build,

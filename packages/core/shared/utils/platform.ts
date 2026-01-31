@@ -2,14 +2,14 @@
  * Checks if the code is running in a browser environment.
  */
 export function isBrowser(): boolean {
-  return typeof window !== 'undefined' && typeof window.document !== 'undefined';
+  return typeof window !== "undefined" && typeof window.document !== "undefined";
 }
 
 /**
  * Checks if the code is running in a Node.js environment.
  */
 export function isNode(): boolean {
-  return typeof process !== 'undefined' && process.versions?.node !== undefined;
+  return typeof process !== "undefined" && process.versions?.node !== undefined;
 }
 
 /**
@@ -33,7 +33,7 @@ export function isTablet(): boolean {
  */
 export function isTouchDevice(): boolean {
   if (!isBrowser()) return false;
-  return 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  return "ontouchstart" in window || navigator.maxTouchPoints > 0;
 }
 
 /**
