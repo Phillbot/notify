@@ -7,9 +7,7 @@
         "data": {
           "root": "packages/core",
           "name": "core",
-          "tags": [
-            "npm:private"
-          ],
+          "tags": ["npm:private"],
           "metadata": {
             "targetGroups": {},
             "js": {
@@ -28,9 +26,7 @@
         "data": {
           "root": "apps/desktop",
           "name": "desktop",
-          "tags": [
-            "npm:private"
-          ],
+          "tags": ["npm:private"],
           "metadata": {
             "targetGroups": {
               "NPM Scripts": [
@@ -158,9 +154,7 @@
         "data": {
           "root": "apps/mobile",
           "name": "mobile",
-          "tags": [
-            "npm:private"
-          ],
+          "tags": ["npm:private"],
           "metadata": {
             "targetGroups": {
               "NPM Scripts": [
@@ -314,18 +308,10 @@
         "data": {
           "root": "apps/server",
           "name": "server",
-          "tags": [
-            "npm:private"
-          ],
+          "tags": ["npm:private"],
           "metadata": {
             "targetGroups": {
-              "NPM Scripts": [
-                "build",
-                "dev",
-                "start",
-                "start:debug",
-                "start:prod"
-              ]
+              "NPM Scripts": ["build", "dev", "start", "start:debug", "start:prod"]
             },
             "js": {
               "packageName": "server",
@@ -345,14 +331,9 @@
               },
               "configurations": {},
               "parallelism": true,
-              "dependsOn": [
-                "^build"
-              ],
+              "dependsOn": ["^build"],
               "cache": true,
-              "outputs": [
-                "{projectRoot}/dist",
-                "{projectRoot}/build"
-              ]
+              "outputs": ["{projectRoot}/dist", "{projectRoot}/build"]
             },
             "dev": {
               "executor": "nx:run-script",
@@ -412,19 +393,10 @@
         "data": {
           "root": "apps/web",
           "name": "web",
-          "tags": [
-            "npm:private"
-          ],
+          "tags": ["npm:private"],
           "metadata": {
             "targetGroups": {
-              "NPM Scripts": [
-                "dev",
-                "build",
-                "preview",
-                "clean:types",
-                "lint",
-                "format"
-              ]
+              "NPM Scripts": ["dev", "build", "preview", "clean:types", "lint", "format"]
             },
             "js": {
               "packageName": "web",
@@ -456,14 +428,9 @@
               },
               "configurations": {},
               "parallelism": true,
-              "dependsOn": [
-                "^build"
-              ],
+              "dependsOn": ["^build"],
               "cache": true,
-              "outputs": [
-                "{projectRoot}/dist",
-                "{projectRoot}/build"
-              ]
+              "outputs": ["{projectRoot}/dist", "{projectRoot}/build"]
             },
             "preview": {
               "executor": "nx:run-script",

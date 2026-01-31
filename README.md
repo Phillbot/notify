@@ -8,6 +8,17 @@
 - [ ] **Upgrade ESLint**: Migrate to ESLint v9+ and Flat Config architecture.
 - [ ] **Package Management**: Audit `node_modules` to ensure clean separation of client/server dependencies (continue optimizing `pnpm-workspace.yaml`).
 
+### Quality Assurance (Testing)
+
+- [ ] **Setup Unit Testing Infrastructure**: Install Vitest for `packages/core` and configure `nx test` targets.
+- [ ] **Core Logic Tests**: Write smoke tests for basic MobX stores and Inversify DI setup.
+
+### CI/CD & DevOps
+
+- [ ] **CI Pipeline**: Create GitHub Actions workflow for lint, build, and test on PRs.
+- [ ] **Mobile Build**: Configure EAS Build for Cloud builds.
+- [ ] **Desktop Release**: Setup Electron-Builder publishing to GitHub Releases.
+
 ### Mobile
 
 - [x] Configure Babel for Decorators & Inversify support.
@@ -20,6 +31,12 @@
 - [x] Implement `Disposable` pattern for resource management.
 - [x] Global SCSS mixins for device detection.
 - [x] Standardize commit rules (husky + commitlint).
+- [ ] **UI Library Expansion**: Formalize `packages/ui-lib` to share **Design Tokens** (colors, typography, spacing) instead of full components.
+- [ ] **API Client**: Create a unified API client in `core`.
+
+### Features
+
+- [ ] **Auth Flow**: Implement authentication logic in `core` and connect UI in all 3 apps.
 
 ---
 

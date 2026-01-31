@@ -3,14 +3,9 @@
   "defaultBase": "master",
   "targetDefaults": {
     "build": {
-      "dependsOn": [
-        "^build"
-      ],
+      "dependsOn": ["^build"],
       "cache": true,
-      "outputs": [
-        "{projectRoot}/dist",
-        "{projectRoot}/build"
-      ]
+      "outputs": ["{projectRoot}/dist", "{projectRoot}/build"]
     },
     "lint": {
       "cache": true

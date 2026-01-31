@@ -14,7 +14,7 @@ interface Window {
 
 // Custom SVG declaration for projects that use SVGR
 declare module "*.svg?react" {
-  import { FunctionComponent, SVGProps } from 'react';
+  import { FunctionComponent, SVGProps } from "react";
   const ReactComponent: FunctionComponent<SVGProps<SVGSVGElement> & { title?: string }>;
   export default ReactComponent;
 }

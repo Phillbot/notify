@@ -2,7 +2,7 @@ import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
-import sassDts from 'vite-plugin-sass-dts'
+import sassDts from "vite-plugin-sass-dts";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -10,7 +10,7 @@ const __dirname = dirname(__filename);
 const isDev = process.env.NODE_ENV === "development";
 
 export default defineConfig({
-  base: './',
+  base: "./",
   css: {
     modules: {
       localsConvention: "camelCaseOnly",
@@ -26,7 +26,7 @@ export default defineConfig({
     sourcemap: isDev,
   },
   esbuild: {
-    jsx: "preserve"
+    jsx: "preserve",
   },
   optimizeDeps: {
     entries: [],
@@ -35,22 +35,19 @@ export default defineConfig({
     react({
       include: "**/*.{jsx,tsx}",
       babel: {
-        presets: [
-          "@babel/preset-typescript",
-          ["@babel/preset-react", { runtime: "automatic" }]
-        ],
+        presets: ["@babel/preset-typescript", ["@babel/preset-react", { runtime: "automatic" }]],
         plugins: [
           "babel-plugin-transform-typescript-metadata",
           ["@babel/plugin-transform-typescript", { allowDeclareFields: true }],
           ["@babel/plugin-proposal-decorators", { legacy: true }],
-          ["@babel/plugin-transform-class-properties", { loose: true }]
-        ]
-      }
+          ["@babel/plugin-transform-class-properties", { loose: true }],
+        ],
+      },
     }),
     sassDts({
-      enabledMode: ['development', 'production'],
-      sourceDir: resolve(__dirname, 'src'),
-      outputDir: resolve(__dirname, 'src/__generated__/styles'),
+      enabledMode: ["development", "production"],
+      sourceDir: resolve(__dirname, "src"),
+      outputDir: resolve(__dirname, "src/__generated__/styles"),
       legacyFileFormat: false,
     }) as any,
   ],
@@ -58,11 +55,12 @@ export default defineConfig({
     alias: {
       "~core/utils": resolve(__dirname, "../../packages/core/shared/utils"),
       "~core/types": resolve(__dirname, "../../packages/core/shared/types"),
+      "~core/config": resolve(__dirname, "../../packages/core/shared/config"),
       "~core/di": resolve(__dirname, "../../packages/core/shared/di"),
       "~core/react": resolve(__dirname, "../../packages/core/react"),
       "~core/stores": resolve(__dirname, "../../packages/core/stores"),
       "~web-components": resolve(__dirname, "src/components"),
-      "@": resolve(__dirname, "src")
-    }
-  }
+      "@": resolve(__dirname, "src"),
+    },
+  },
 });

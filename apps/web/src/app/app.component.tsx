@@ -1,9 +1,9 @@
 import { PureComponent } from "react";
 
-import { Counter } from "./counter/counter.component";
-import { Chat } from "./chat/chat.component";
+import { Counter } from "@/features/counter";
+import { Chat } from "@/features/chat";
 
-import styles from './app.module.scss';
+import styles from "./app.module.scss";
 
 export class App extends PureComponent {
   override render() {

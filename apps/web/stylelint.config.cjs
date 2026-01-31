@@ -8,12 +8,23 @@ module.exports = {
     {
       files: ["**/*.scss"],
       customSyntax: "postcss-scss",
+      rules: {
+        "@stylistic/block-closing-brace-newline-after": null,
+        "scss/at-if-closing-brace-newline-after": "always-last-in-chain",
+        "scss/at-else-closing-brace-newline-after": "always-last-in-chain",
+        "scss/at-else-empty-line-before": "never",
+      },
     },
   ],
 
   rules: {
     "@stylistic/indentation": 2,
-    "@stylistic/block-closing-brace-newline-after": "always",
+    "@stylistic/block-closing-brace-newline-after": [
+      "always",
+      {
+        ignoreAtRules: ["else"],
+      },
+    ],
     "@stylistic/block-opening-brace-space-before": "always",
     "@stylistic/declaration-block-semicolon-newline-after": "always",
     "@stylistic/no-eol-whitespace": true,

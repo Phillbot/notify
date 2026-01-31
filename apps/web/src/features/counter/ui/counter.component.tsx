@@ -29,11 +29,7 @@ export class Counter extends Component {
     const { change, getCounterSymbol } = this._counterStore;
 
     return Object.values(Action).map((action) => (
-      <div
-        key={action}
-        className={styles.counterButtonPanelButton}
-        onClick={() => change(action)}
-      >
+      <div key={action} className={styles.counterButtonPanelButton} onClick={() => change(action)}>
         {getCounterSymbol(action)}
       </div>
     ));

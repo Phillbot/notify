@@ -4,10 +4,10 @@ import { Provider } from "inversify-react";
 
 import { isDev } from "~core/utils";
 
-import { App } from "@/components/app.component";
+import { App } from "@/app/app.component";
 import { webContainer } from "@/web.module";
 
-import './reset.css'
+import "./reset.css";
 
 if (isDev()) {
   console.log("Hey dev! 🎯");
@@ -16,7 +16,7 @@ if (isDev()) {
 const appRoot = document.getElementById("root");
 
 if (!appRoot) {
-  throw new Error('root node is not exist');
+  throw new Error("root node is not exist");
 }
 
 createRoot(appRoot).render(
@@ -24,5 +24,5 @@ createRoot(appRoot).render(
     <Provider container={webContainer}>
       <App />
     </Provider>
-  </StrictMode>
+  </StrictMode>,
 );
