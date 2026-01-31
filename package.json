@@ -42,6 +42,7 @@
     "test": "nx run-many -t test",
     "graph": "nx graph",
     "format": "nx run-many -t format",
+    "check": "pnpm run format && pnpm run lint",
     "prepare": "husky"
   },
   "devDependencies": {
