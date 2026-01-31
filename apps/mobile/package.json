@@ -23,8 +23,10 @@
   },
   "dependencies": {
     "@babel/runtime": "catalog:",
+    "@react-native-async-storage/async-storage": "catalog:mobile",
     "core": "workspace:*",
     "expo": "catalog:mobile",
+    "expo-modules-core": "catalog:mobile",
     "expo-status-bar": "catalog:mobile",
     "expo-system-ui": "catalog:mobile",
     "inversify": "catalog:",
@@ -44,6 +46,7 @@
     "@babel/core": "catalog:",
     "@types/react": "catalog:react18",
     "babel-plugin-module-resolver": "^5.0.2",
+    "@babel/plugin-transform-typescript": "catalog:",
     "babel-plugin-transform-typescript-metadata": "catalog:",
     "babel-preset-expo": "catalog:mobile"
   }

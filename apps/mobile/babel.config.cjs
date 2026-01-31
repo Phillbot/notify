@@ -3,9 +3,12 @@ module.exports = function (api) {
   return {
     presets: ["babel-preset-expo"],
     plugins: [
+      "babel-plugin-transform-typescript-metadata",
+      ["@babel/plugin-proposal-decorators", { legacy: true }],
       [
         "module-resolver",
         {
+          root: ["./src"],
           alias: {
             "~core/utils": "../../packages/core/shared/utils",
             "~core/types": "../../packages/core/shared/types",
@@ -13,13 +16,11 @@ module.exports = function (api) {
             "~core/di": "../../packages/core/shared/di",
             "~core/react": "../../packages/core/react",
             "~core/stores": "../../packages/core/stores",
+            "~core": "../../packages/core",
+            "@": "./src",
           },
         },
       ],
-      ["@babel/plugin-transform-typescript", { allowDeclareFields: true }],
-      "babel-plugin-transform-typescript-metadata",
-      ["@babel/plugin-proposal-decorators", { legacy: true }],
-      ["@babel/plugin-proposal-class-properties", { loose: true }],
     ],
   };
 };

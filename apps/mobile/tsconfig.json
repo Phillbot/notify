@@ -15,6 +15,9 @@
       "@/*": [
         "apps/mobile/src/*"
       ],
+      "~core/*": [
+        "packages/core/*"
+      ],
       "~core/utils": [
         "packages/core/shared/utils"
       ],
