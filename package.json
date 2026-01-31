@@ -41,6 +41,7 @@
     "lint": "nx run-many -t lint",
     "test": "nx run-many -t test",
     "graph": "nx graph",
+    "format": "nx run-many -t format",
     "prepare": "husky"
   },
   "devDependencies": {

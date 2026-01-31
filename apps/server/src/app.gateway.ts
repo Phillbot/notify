@@ -30,14 +30,15 @@ export class AppGateway implements OnModuleInit {
           const rawMessage = message.toString();
           const parsed = JSON.parse(rawMessage);
 
+          const senderName = parsed.userName || `User ${clientId}`;
           const reply = JSON.stringify({
-            from: `User ${clientId}`,
+            from: senderName,
             text: parsed.text,
             senderId: clientId,
           });
 
           // Broadcast to all connected clients
-          console.log(`📣 From ${clientId}: ${parsed.text} (to ${this.wss.clients.size} clients)`);
+          console.log(`📣 From ${senderName} (${clientId}): ${parsed.text} (to ${this.wss.clients.size} clients)`);
 
           this.wss.clients.forEach((client) => {
             if (client.readyState === WebSocket.OPEN) {
