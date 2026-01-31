@@ -3,13 +3,27 @@ import { fileURLToPath } from "url";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
 import sassDts from 'vite-plugin-sass-dts'
-import { sharedViteConfig } from "../../vite.config";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
+const isDev = process.env.NODE_ENV === "development";
+
 export default defineConfig({
-  ...sharedViteConfig,
+  base: './',
+  css: {
+    modules: {
+      localsConvention: "camelCaseOnly",
+    },
+    preprocessorOptions: {
+      scss: {
+        quietDeps: true,
+      },
+    },
+  },
+  build: {
+    sourcemap: isDev,
+  },
   esbuild: {
     jsx: "preserve"
   },
@@ -36,7 +50,8 @@ export default defineConfig({
       enabledMode: ['development', 'production'],
       sourceDir: resolve(__dirname, 'src'),
       outputDir: resolve(__dirname, 'src/__generated__/styles'),
-    }),
+      legacyFileFormat: false,
+    }) as any,
   ],
   resolve: {
     alias: {
