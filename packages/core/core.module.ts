@@ -1,10 +1,13 @@
 import { ContainerModule } from "inversify";
 
-import { coreContainer } from "~core/di";
-import { ICounterStore } from "~core/stores/counter";
+import { ICounterStore } from "./stores/counter/types";
+import { CoreCounterStore } from "./stores/counter/counter.store";
+import { ChatController } from "./stores/chat/chat.controller";
 
-const coreModule = new ContainerModule((bind) => {
-  bind<ICounterStore>(ICounterStore.$).to(ICounterStore.useClass);
+export const coreModule = new ContainerModule((bind) => {
+  // Base counter implementation
+  bind<ICounterStore>(ICounterStore.$).to(CoreCounterStore);
+
+  // Shared chat controller
+  bind(ChatController).toSelf().inSingletonScope();
 });
-
-coreContainer.load(coreModule);

@@ -11,6 +11,9 @@ export class ChatStore implements IChatStore {
   @observable
   private _isConnected = false;
 
+  @observable
+  private _userName = "";
+
   constructor(
     @inject(IChatTransport.$)
     private readonly _transport: IChatTransport
@@ -30,6 +33,16 @@ export class ChatStore implements IChatStore {
   @computed
   get isConnected(): boolean {
     return this._isConnected;
+  }
+
+  @computed
+  get userName(): string {
+    return this._userName;
+  }
+
+  @action
+  setUserName(name: string): void {
+    this._userName = name;
   }
 
   @action
@@ -74,7 +87,11 @@ export class ChatStore implements IChatStore {
   @action
   sendMessage(text: string): void {
     if (this.isConnected && text.trim()) {
-      this._transport.send(JSON.stringify({ text }));
+      const payload = {
+        text,
+        userName: this.userName || undefined,
+      };
+      this._transport.send(JSON.stringify(payload));
       // We don't add local message anymore,
       // we wait for the server to broadcast it back.
     }

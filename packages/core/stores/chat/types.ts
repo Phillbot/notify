@@ -1,12 +1,12 @@
+import { createValueToken } from "~core/di";
+
 export interface ChatMessage {
   from: string;
   text: string;
   senderId?: string;
 }
 
-export const IChatTransport = {
-  $: Symbol.for("IChatTransport"),
-};
+export const IChatTransport = createValueToken("IChatTransport");
 
 export interface IChatTransport {
   connect(url: string): void;
@@ -17,17 +17,14 @@ export interface IChatTransport {
   get isConnected(): boolean;
 }
 
-export const IChatStore = {
-  $: Symbol.for("IChatStore"),
-  useClass: class {
-    // Placeholder for DI token
-  } as any,
-};
+export const IChatStore = createValueToken("IChatStore");
 
 export interface IChatStore {
   readonly messages: ChatMessage[];
   readonly isConnected: boolean;
+  readonly userName: string;
   connect(url: string): void;
   disconnect(): void;
+  setUserName(name: string): void;
   sendMessage(text: string): void;
 }
