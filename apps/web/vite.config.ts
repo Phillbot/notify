@@ -59,6 +59,7 @@ export default defineConfig({
       "~core/di": resolve(__dirname, "../../packages/core/shared/di"),
       "~core/react": resolve(__dirname, "../../packages/core/react"),
       "~core/stores": resolve(__dirname, "../../packages/core/stores"),
+      "~core": resolve(__dirname, "../../packages/core"),
       "~web-components": resolve(__dirname, "src/components"),
       "@": resolve(__dirname, "src"),
     },
