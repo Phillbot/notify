@@ -6,6 +6,14 @@
   "scripts": {
     "lint": "eslint \"**/*.ts\" --fix"
   },
+  "exports": {
+    "./utils": "./shared/utils/index.ts",
+    "./types": "./shared/types/index.ts",
+    "./di": "./shared/di/index.ts",
+    "./config": "./shared/config/index.ts",
+    "./react": "./react/index.ts",
+    "./stores/*": "./stores/*/index.ts"
+  },
   "peerDependencies": {
     "react": "^18.2.0 || ^19.0.0",
     "react-dom": "^18.2.0 || ^19.0.0",
