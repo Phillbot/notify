@@ -1,0 +1,84 @@
+@use "@/styles/mixins" as media;
+
+.chat-header {
+  padding: 1.5rem 2rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 10%);
+
+  @include media.mobile {
+    padding: 1rem;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+      margin: 0;
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+  }
+
+  &-online-badge {
+    font-size: 0.75rem;
+    background: rgb(255 255 255 / 20%);
+    padding: 2px 8px;
+    border-radius: 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 4px;
+
+    &::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      background: #4ade80;
+      border-radius: 50%;
+      box-shadow: 0 0 8px #4ade80;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    @include media.mobile {
+      width: 100%;
+      justify-content: space-between;
+    }
+  }
+
+  &-current-user {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    background: rgb(0 0 0 / 10%);
+    padding: 6px 14px;
+    border-radius: 20px;
+  }
+
+  &-logout {
+    background: rgb(255 255 255 / 20%);
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgb(255 255 255 / 35%);
+    }
+  }
+}

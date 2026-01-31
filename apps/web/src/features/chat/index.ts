@@ -1,1 +1,1 @@
-export { Chat } from "./ui/chat.component";
+export { Chat } from "./ui/chat/chat.component";

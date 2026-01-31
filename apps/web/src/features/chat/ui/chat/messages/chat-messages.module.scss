@@ -1,0 +1,122 @@
+@use "@/styles/mixins" as media;
+
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 2rem;
+
+  @include media.mobile {
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  list-style: none;
+  margin: 0;
+  background: #f8fafc;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+  }
+
+  &-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: #475569;
+    flex-shrink: 0;
+    box-shadow: 0 4px 6px rgb(0 0 0 / 5%);
+  }
+
+  &-content {
+    background: white;
+    padding: 1rem;
+    border-radius: 16px;
+    border-top-left-radius: 2px;
+    box-shadow: 0 4px 12px rgb(0 0 0 / 3%);
+    border: 1px solid #f1f5f9;
+  }
+
+  &-sender {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #6366f1;
+    margin-bottom: 4px;
+  }
+
+  &-text {
+    color: #1e293b;
+    line-height: 1.5;
+    font-size: 0.95rem;
+  }
+
+  &-item {
+    display: flex;
+    gap: 1rem;
+    max-width: 80%;
+
+    @include media.mobile {
+      max-width: 90%;
+    }
+
+    animation: slide-up 0.3s ease-out;
+
+    &-own {
+      align-self: flex-end;
+      flex-direction: row-reverse;
+
+      .chat-messages-content {
+        background: #6366f1;
+        border-radius: 16px;
+        border-top-right-radius: 2px;
+        border-top-left-radius: 16px;
+        border: none;
+        box-shadow: 0 4px 15px rgb(99 102 241 / 20%);
+      }
+
+      .chat-messages-sender {
+        display: none;
+      }
+
+      .chat-messages-text {
+        color: white;
+      }
+
+      .chat-messages-avatar {
+        background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
+        color: white;
+      }
+    }
+  }
+
+  &-empty {
+    text-align: center;
+    color: #94a3b8;
+    margin: auto;
+    font-style: italic;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
