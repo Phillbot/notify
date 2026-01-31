@@ -16,7 +16,7 @@ export class ChatController {
   public tempNickname = "";
 
   @inject(IChatStore.$)
-  private readonly _chatStore!: IChatStore;
+  protected readonly _chatStore!: IChatStore;
 
   @inject(IStorageService.$)
   private readonly _storageService!: IStorageService;
@@ -30,7 +30,7 @@ export class ChatController {
     await this.restoreSession();
   }
 
-  private async restoreSession(): Promise<void> {
+  protected async restoreSession(): Promise<void> {
     try {
       const savedNickname = await this._storageService.getItem(NICKNAME_KEY);
       if (savedNickname) {
