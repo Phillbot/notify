@@ -112,9 +112,12 @@ module.exports = {
 
   overrides: [
     {
-      files: ["*.js", "*.cjs"],
+      files: ["*.js", "*.cjs", "*.mjs"],
       env: {
         node: true,
+      },
+      parserOptions: {
+        project: null,
       },
       rules: {
         "@typescript-eslint/no-var-requires": "off",

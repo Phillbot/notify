@@ -36,9 +36,12 @@
     "dev": "nx run-many -t dev",
     "lint": "nx run-many -t lint",
     "test": "nx run-many -t test",
-    "graph": "nx graph"
+    "graph": "nx graph",
+    "prepare": "husky"
   },
   "devDependencies": {
+    "@commitlint/cli": "^20.4.0",
+    "@commitlint/config-conventional": "^20.4.0",
     "@types/node": "catalog:",
     "@typescript-eslint/eslint-plugin": "catalog:",
     "@typescript-eslint/parser": "catalog:",
@@ -49,10 +52,11 @@
     "eslint-plugin-react": "catalog:",
     "eslint-plugin-react-hooks": "catalog:",
     "globals": "catalog:",
+    "husky": "^9.1.7",
+    "nx": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog:",
-    "nx": "catalog:"
+    "vite": "catalog:"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
