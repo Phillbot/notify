@@ -16,4 +16,5 @@ export * from './svg';
 export * from './uuid';
 export * from './url';
 export * from './validate';
+export * from './disposable';
 
