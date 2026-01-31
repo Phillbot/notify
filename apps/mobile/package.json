@@ -14,7 +14,8 @@
     "build:ios": "eas build --platform ios",
     "build:web": "expo export:web",
     "run:android": "expo run:android",
-    "run:ios": "expo run:ios"
+    "run:ios": "expo run:ios",
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix"
   },
   "dependencies": {
     "@babel/runtime": "7.27.0",

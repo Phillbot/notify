@@ -1,19 +1,19 @@
 {
   "graph": {
     "nodes": {
-      "@notify/core": {
-        "name": "@notify/core",
+      "core": {
+        "name": "core",
         "type": "app",
         "data": {
           "root": "packages/core",
-          "name": "@notify/core",
+          "name": "core",
           "tags": [
             "npm:private"
           ],
           "metadata": {
             "targetGroups": {},
             "js": {
-              "packageName": "@notify/core",
+              "packageName": "core",
               "packageVersion": "0.0.1",
               "isInPackageManagerWorkspaces": true
             }
@@ -22,12 +22,12 @@
           "implicitDependencies": []
         }
       },
-      "notify-desktop-client": {
-        "name": "notify-desktop-client",
+      "desktop": {
+        "name": "desktop",
         "type": "lib",
         "data": {
           "root": "apps/desktop",
-          "name": "notify-desktop-client",
+          "name": "desktop",
           "tags": [
             "npm:private"
           ],
@@ -37,6 +37,7 @@
                 "copy:web",
                 "prestart",
                 "start",
+                "dev",
                 "prebuild",
                 "build:mac",
                 "build:win",
@@ -44,7 +45,7 @@
               ]
             },
             "js": {
-              "packageName": "notify-desktop-client",
+              "packageName": "desktop",
               "packageVersion": "0.0.1",
               "packageMain": "index.js",
               "isInPackageManagerWorkspaces": true
@@ -69,7 +70,7 @@
                 "script": "prestart"
               },
               "metadata": {
-                "scriptContent": "pnpm --filter notify-web build && pnpm run copy:web",
+                "scriptContent": "nx build web && pnpm run copy:web",
                 "runCommand": "pnpm run prestart"
               },
               "configurations": {},
@@ -87,13 +88,25 @@
               "configurations": {},
               "parallelism": true
             },
+            "dev": {
+              "executor": "nx:run-script",
+              "options": {
+                "script": "dev"
+              },
+              "metadata": {
+                "scriptContent": "electron .",
+                "runCommand": "pnpm run dev"
+              },
+              "configurations": {},
+              "parallelism": true
+            },
             "prebuild": {
               "executor": "nx:run-script",
               "options": {
                 "script": "prebuild"
               },
               "metadata": {
-                "scriptContent": "pnpm --filter notify-web build && pnpm run copy:web",
+                "scriptContent": "nx build web && pnpm run copy:web",
                 "runCommand": "pnpm run prebuild"
               },
               "configurations": {},
@@ -139,12 +152,12 @@
           "implicitDependencies": []
         }
       },
-      "notify-mobile-client": {
-        "name": "notify-mobile-client",
+      "mobile": {
+        "name": "mobile",
         "type": "lib",
         "data": {
           "root": "apps/mobile",
-          "name": "notify-mobile-client",
+          "name": "mobile",
           "tags": [
             "npm:private"
           ],
@@ -152,6 +165,7 @@
             "targetGroups": {
               "NPM Scripts": [
                 "start",
+                "dev",
                 "android",
                 "ios",
                 "web",
@@ -163,7 +177,7 @@
               ]
             },
             "js": {
-              "packageName": "notify-mobile-client",
+              "packageName": "mobile",
               "packageVersion": "0.0.1",
               "packageMain": "src/index.ts",
               "isInPackageManagerWorkspaces": true
@@ -178,6 +192,18 @@
               "metadata": {
                 "scriptContent": "expo start",
                 "runCommand": "pnpm run start"
+              },
+              "configurations": {},
+              "parallelism": true
+            },
+            "dev": {
+              "executor": "nx:run-script",
+              "options": {
+                "script": "dev"
+              },
+              "metadata": {
+                "scriptContent": "expo start",
+                "runCommand": "pnpm run dev"
               },
               "configurations": {},
               "parallelism": true
@@ -282,12 +308,12 @@
           "implicitDependencies": []
         }
       },
-      "notify-nest-server": {
-        "name": "notify-nest-server",
+      "server": {
+        "name": "server",
         "type": "app",
         "data": {
           "root": "apps/server",
-          "name": "notify-nest-server",
+          "name": "server",
           "tags": [
             "npm:private"
           ],
@@ -295,14 +321,14 @@
             "targetGroups": {
               "NPM Scripts": [
                 "build",
+                "dev",
                 "start",
-                "start:dev",
                 "start:debug",
                 "start:prod"
               ]
             },
             "js": {
-              "packageName": "notify-nest-server",
+              "packageName": "server",
               "packageVersion": "0.0.1",
               "isInPackageManagerWorkspaces": true
             }
@@ -328,6 +354,18 @@
                 "{projectRoot}/build"
               ]
             },
+            "dev": {
+              "executor": "nx:run-script",
+              "options": {
+                "script": "dev"
+              },
+              "metadata": {
+                "scriptContent": "nest start --watch",
+                "runCommand": "pnpm run dev"
+              },
+              "configurations": {},
+              "parallelism": true
+            },
             "start": {
               "executor": "nx:run-script",
               "options": {
@@ -336,18 +374,6 @@
               "metadata": {
                 "scriptContent": "nest start",
                 "runCommand": "pnpm run start"
-              },
-              "configurations": {},
-              "parallelism": true
-            },
-            "start:dev": {
-              "executor": "nx:run-script",
-              "options": {
-                "script": "start:dev"
-              },
-              "metadata": {
-                "scriptContent": "nest start --watch",
-                "runCommand": "pnpm run start:dev"
               },
               "configurations": {},
               "parallelism": true
@@ -380,12 +406,12 @@
           "implicitDependencies": []
         }
       },
-      "notify-web-client": {
-        "name": "notify-web-client",
+      "web": {
+        "name": "web",
         "type": "app",
         "data": {
           "root": "apps/web",
-          "name": "notify-web-client",
+          "name": "web",
           "tags": [
             "npm:private"
           ],
@@ -396,12 +422,12 @@
                 "build",
                 "preview",
                 "clean:types",
-                "lint:styles",
-                "format:styles"
+                "lint",
+                "format"
               ]
             },
             "js": {
-              "packageName": "notify-web-client",
+              "packageName": "web",
               "packageVersion": "0.0.1",
               "isInPackageManagerWorkspaces": true
             }
@@ -463,26 +489,27 @@
               "configurations": {},
               "parallelism": true
             },
-            "lint:styles": {
+            "lint": {
               "executor": "nx:run-script",
               "options": {
-                "script": "lint:styles"
+                "script": "lint"
               },
               "metadata": {
                 "scriptContent": "stylelint '**/*.{scss,css}'",
-                "runCommand": "pnpm run lint:styles"
+                "runCommand": "pnpm run lint"
               },
               "configurations": {},
-              "parallelism": true
+              "parallelism": true,
+              "cache": true
             },
-            "format:styles": {
+            "format": {
               "executor": "nx:run-script",
               "options": {
-                "script": "format:styles"
+                "script": "format"
               },
               "metadata": {
                 "scriptContent": "stylelint '**/*.{scss,css}' --fix",
-                "runCommand": "pnpm run format:styles"
+                "runCommand": "pnpm run format"
               },
               "configurations": {},
               "parallelism": true
@@ -493,26 +520,26 @@
       }
     },
     "dependencies": {
-      "@notify/core": [],
-      "notify-desktop-client": [],
-      "notify-mobile-client": [
+      "core": [],
+      "desktop": [],
+      "mobile": [
         {
-          "source": "notify-mobile-client",
-          "target": "@notify/core",
+          "source": "mobile",
+          "target": "core",
           "type": "static"
         }
       ],
-      "notify-nest-server": [
+      "server": [
         {
-          "source": "notify-nest-server",
-          "target": "@notify/core",
+          "source": "server",
+          "target": "core",
           "type": "static"
         }
       ],
-      "notify-web-client": [
+      "web": [
         {
-          "source": "notify-web-client",
-          "target": "@notify/core",
+          "source": "web",
+          "target": "core",
           "type": "static"
         }
       ]

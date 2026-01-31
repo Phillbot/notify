@@ -17,9 +17,6 @@ importers:
       '@typescript-eslint/parser':
         specifier: 6.21.0
         version: 6.21.0(eslint@8.57.0)(typescript@5.8.2)
-      '@vitejs/plugin-react':
-        specifier: ^5.1.2
-        version: 5.1.2(vite@7.3.1(@types/node@22.13.11)(lightningcss@1.27.0)(sass-embedded@1.97.3)(sass@1.97.3)(terser@5.41.0)(yaml@2.8.2))
       concurrently:
         specifier: 9.1.2
         version: 9.1.2
@@ -50,9 +47,6 @@ importers:
       prettier:
         specifier: 3.6.2
         version: 3.6.2
-      ts-loader:
-        specifier: 9.5.2
-        version: 9.5.2(typescript@5.8.2)(webpack@5.97.1(@swc/core@1.10.7))
       ts-node:
         specifier: 10.9.2
         version: 10.9.2(@swc/core@1.10.7)(@types/node@22.13.11)(typescript@5.8.2)
@@ -70,6 +64,10 @@ importers:
         version: 7.3.1(@types/node@22.13.11)(lightningcss@1.27.0)(sass-embedded@1.97.3)(sass@1.97.3)(terser@5.41.0)(yaml@2.8.2)
 
   apps/desktop:
+    dependencies:
+      web:
+        specifier: workspace:*
+        version: link:../web
     devDependencies:
       cpy-cli:
         specifier: 5.0.0
@@ -198,22 +196,22 @@ importers:
         version: 6.2.2(reflect-metadata@0.2.2)
       inversify-react:
         specifier: 1.2.0
-        version: 1.2.0(inversify@6.2.2(reflect-metadata@0.2.2))(react@18.2.0)
+        version: 1.2.0(inversify@6.2.2(reflect-metadata@0.2.2))(react@18.3.1)
       mobx:
         specifier: 6.13.7
         version: 6.13.7
       mobx-react:
         specifier: 9.2.0
-        version: 9.2.0(mobx@6.13.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
+        version: 9.2.0(mobx@6.13.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       mobx-react-lite:
         specifier: 4.1.0
-        version: 4.1.0(mobx@6.13.7)(react-dom@18.2.0(react@18.2.0))(react-native@0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.2.0))(react@18.2.0)
+        version: 4.1.0(mobx@6.13.7)(react-dom@18.3.1(react@18.3.1))(react-native@0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       react:
-        specifier: 18.2.0
-        version: 18.2.0
+        specifier: 18.3.1
+        version: 18.3.1
       react-dom:
-        specifier: 18.2.0
-        version: 18.2.0(react@18.2.0)
+        specifier: 18.3.1
+        version: 18.3.1(react@18.3.1)
       reflect-metadata:
         specifier: 0.2.2
         version: 0.2.2
@@ -237,8 +235,11 @@ importers:
         specifier: 18.3.12
         version: 18.3.12
       '@types/react-dom':
-        specifier: 18.2.0
-        version: 18.2.0
+        specifier: 18.3.1
+        version: 18.3.1
+      '@vitejs/plugin-react':
+        specifier: ^5.1.2
+        version: 5.1.2(vite@7.3.1(@types/node@22.13.11)(lightningcss@1.27.0)(sass-embedded@1.97.3)(sass@1.86.0)(terser@5.41.0)(yaml@2.8.2))
       autoprefixer:
         specifier: 10.4.21
         version: 10.4.21(postcss@8.5.3)
@@ -280,25 +281,25 @@ importers:
         version: 6.2.2(reflect-metadata@0.2.2)
       inversify-react:
         specifier: 1.2.0
-        version: 1.2.0(inversify@6.2.2(reflect-metadata@0.2.2))(react@18.2.0)
+        version: 1.2.0(inversify@6.2.2(reflect-metadata@0.2.2))(react@18.3.1)
       mobx:
         specifier: 6.13.7
         version: 6.13.7
       mobx-react:
         specifier: 9.2.0
-        version: 9.2.0(mobx@6.13.7)(react-dom@18.2.0(react@18.2.0))(react-native@0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.2.0))(react@18.2.0)
+        version: 9.2.0(mobx@6.13.7)(react-dom@18.3.1(react@18.3.1))(react-native@0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       mobx-react-lite:
         specifier: 4.1.0
-        version: 4.1.0(mobx@6.13.7)(react-dom@18.2.0(react@18.2.0))(react-native@0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.2.0))(react@18.2.0)
+        version: 4.1.0(mobx@6.13.7)(react-dom@18.3.1(react@18.3.1))(react-native@0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       react:
-        specifier: 18.2.0
-        version: 18.2.0
+        specifier: 18.3.1
+        version: 18.3.1
       react-dom:
-        specifier: 18.2.0
-        version: 18.2.0(react@18.2.0)
+        specifier: 18.3.1
+        version: 18.3.1(react@18.3.1)
       react-native:
         specifier: 0.76.7
-        version: 0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.2.0)
+        version: 0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.3.1)
       reflect-metadata:
         specifier: 0.2.2
         version: 0.2.2
@@ -2588,8 +2589,8 @@ packages:
   '@types/range-parser@1.2.7':
     resolution: {integrity: sha512-hKormJbkJqzQGhziax5PItDUTMAM9uE2XXQmM37dyd4hVM+5aVl7oVxMVUiVQn2oCQFN/LKCZdvSM0pFRqbSmQ==}
 
-  '@types/react-dom@18.2.0':
-    resolution: {integrity: sha512-8yQrvS6sMpSwIovhPOwfyNf2Wz6v/B62LFSVYQ85+Rq3tLsBIG7rP5geMxaijTUxSkrO6RzN/IRuIAADYQsleA==}
+  '@types/react-dom@18.3.1':
+    resolution: {integrity: sha512-qW1Mfv8taImTthu4KoXgDfLuk4bydU6Q/TkADnDWWHwi4NX4BR+LWfTp2sVmTqRrsHvyDDTelgelxJ+SsejKKQ==}
 
   '@types/react@18.3.12':
     resolution: {integrity: sha512-D2wOSq/d6Agt28q7rSI3jhU7G6aiuzljDGZ2hTZHIkrTLUI+AF3WMeKkEZ9nN2fkBAlcktT6vcZjDFiIhMYEQw==}
@@ -6408,10 +6409,10 @@ packages:
   react-devtools-core@5.3.2:
     resolution: {integrity: sha512-crr9HkVrDiJ0A4zot89oS0Cgv0Oa4OG1Em4jit3P3ZxZSKPMYyMjfwMqgcJna9o625g8oN87rBm8SWWrSTBZxg==}
 
-  react-dom@18.2.0:
-    resolution: {integrity: sha512-6IMTriUmvsjHUjNtEDudZfuDQUoWXVxKHhlEGSk81n4YFS+r/Kl99wXiwlVXtPBtJenozv2P+hxDsw9eA7Xo6g==}
+  react-dom@18.3.1:
+    resolution: {integrity: sha512-5m4nQKp+rZRb09LNH59GM4BxTh9251/ylbKIbpe7TpGxfJ+9kv6BLkLBXIjjspbgbnIBNqlI23tRnTWT0snUIw==}
     peerDependencies:
-      react: ^18.2.0
+      react: ^18.3.1
 
   react-is@16.13.1:
     resolution: {integrity: sha512-24e6ynE2H+OKt4kqsOvNd8kBpV65zoxbA4BVsEOB3ARVWQki/DHzaUoC5KuON/BiccDaCCTZBuOcfZs70kR8bQ==}
@@ -6436,10 +6437,6 @@ packages:
 
   react-refresh@0.18.0:
     resolution: {integrity: sha512-QgT5//D3jfjJb6Gsjxv0Slpj23ip+HtOpnNgnb2S5zU3CB26G/IDPGoy4RJB42wzFE46DRsstbW6tKHoKbhAxw==}
-    engines: {node: '>=0.10.0'}
-
-  react@18.2.0:
-    resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}
     engines: {node: '>=0.10.0'}
 
   react@18.3.1:
@@ -7383,13 +7380,6 @@ packages:
 
   ts-interface-checker@0.1.13:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
-
-  ts-loader@9.5.2:
-    resolution: {integrity: sha512-Qo4piXvOTWcMGIgRiuFa6nHNm+54HbYaZCKqc9eeZCLRy3XqafQgwX2F7mofrbJG3g7EEb+lkiR+z2Lic2s3Zw==}
-    engines: {node: '>=12.0.0'}
-    peerDependencies:
-      typescript: '*'
-      webpack: ^5.0.0
 
   ts-node@10.9.2:
     resolution: {integrity: sha512-f0FFpIdcHgn8zcPSbf1dRevwt047YMnaiJM3u2w2RewrB+fob/zePZcrOyQoLMMO7aBIddLcQIEK5dYjkLnGrQ==}
@@ -10461,8 +10451,8 @@ snapshots:
 
   '@jridgewell/remapping@2.3.5':
     dependencies:
-      '@jridgewell/gen-mapping': 0.3.8
-      '@jridgewell/trace-mapping': 0.3.25
+      '@jridgewell/gen-mapping': 0.3.13
+      '@jridgewell/trace-mapping': 0.3.31
 
   '@jridgewell/resolve-uri@3.1.2': {}
 
@@ -11172,12 +11162,12 @@ snapshots:
     optionalDependencies:
       '@types/react': 18.3.12
 
-  '@react-native/virtualized-lists@0.76.7(@types/react@18.3.12)(react-native@0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.2.0))(react@18.2.0)':
+  '@react-native/virtualized-lists@0.76.7(@types/react@18.3.12)(react-native@0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)':
     dependencies:
       invariant: 2.2.4
       nullthrows: 1.1.1
-      react: 18.2.0
-      react-native: 0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.2.0)
+      react: 18.3.1
+      react-native: 0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.3.1)
     optionalDependencies:
       '@types/react': 18.3.12
 
@@ -11512,7 +11502,7 @@ snapshots:
 
   '@types/range-parser@1.2.7': {}
 
-  '@types/react-dom@18.2.0':
+  '@types/react-dom@18.3.1':
     dependencies:
       '@types/react': 18.3.12
 
@@ -11788,7 +11778,7 @@ snapshots:
       '@urql/core': 5.1.1
       wonka: 6.3.5
 
-  '@vitejs/plugin-react@5.1.2(vite@7.3.1(@types/node@22.13.11)(lightningcss@1.27.0)(sass-embedded@1.97.3)(sass@1.97.3)(terser@5.41.0)(yaml@2.8.2))':
+  '@vitejs/plugin-react@5.1.2(vite@7.3.1(@types/node@22.13.11)(lightningcss@1.27.0)(sass-embedded@1.97.3)(sass@1.86.0)(terser@5.41.0)(yaml@2.8.2))':
     dependencies:
       '@babel/core': 7.28.6
       '@babel/plugin-transform-react-jsx-self': 7.27.1(@babel/core@7.28.6)
@@ -11796,7 +11786,7 @@ snapshots:
       '@rolldown/pluginutils': 1.0.0-beta.53
       '@types/babel__core': 7.20.5
       react-refresh: 0.18.0
-      vite: 7.3.1(@types/node@22.13.11)(lightningcss@1.27.0)(sass-embedded@1.97.3)(sass@1.97.3)(terser@5.41.0)(yaml@2.8.2)
+      vite: 7.3.1(@types/node@22.13.11)(lightningcss@1.27.0)(sass-embedded@1.97.3)(sass@1.86.0)(terser@5.41.0)(yaml@2.8.2)
     transitivePeerDependencies:
       - supports-color
 
@@ -14553,11 +14543,6 @@ snapshots:
     dependencies:
       loose-envify: 1.4.0
 
-  inversify-react@1.2.0(inversify@6.2.2(reflect-metadata@0.2.2))(react@18.2.0):
-    dependencies:
-      inversify: 6.2.2(reflect-metadata@0.2.2)
-      react: 18.2.0
-
   inversify-react@1.2.0(inversify@6.2.2(reflect-metadata@0.2.2))(react@18.3.1):
     dependencies:
       inversify: 6.2.2(reflect-metadata@0.2.2)
@@ -15504,22 +15489,22 @@ snapshots:
 
   mkdirp@1.0.4: {}
 
-  mobx-react-lite@4.1.0(mobx@6.13.7)(react-dom@18.2.0(react@18.2.0))(react-native@0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.2.0))(react@18.2.0):
+  mobx-react-lite@4.1.0(mobx@6.13.7)(react-dom@18.3.1(react@18.3.1))(react-native@0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
     dependencies:
       mobx: 6.13.7
-      react: 18.2.0
-      use-sync-external-store: 1.5.0(react@18.2.0)
+      react: 18.3.1
+      use-sync-external-store: 1.5.0(react@18.3.1)
     optionalDependencies:
-      react-dom: 18.2.0(react@18.2.0)
-      react-native: 0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.2.0)
+      react-dom: 18.3.1(react@18.3.1)
+      react-native: 0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.3.1)
 
-  mobx-react-lite@4.1.0(mobx@6.13.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  mobx-react-lite@4.1.0(mobx@6.13.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       mobx: 6.13.7
-      react: 18.2.0
-      use-sync-external-store: 1.5.0(react@18.2.0)
+      react: 18.3.1
+      use-sync-external-store: 1.5.0(react@18.3.1)
     optionalDependencies:
-      react-dom: 18.2.0(react@18.2.0)
+      react-dom: 18.3.1(react@18.3.1)
 
   mobx-react-lite@4.1.0(mobx@6.13.7)(react-native@0.76.7(@babel/core@7.25.2)(@babel/preset-env@7.27.2(@babel/core@7.25.2))(@types/react@18.3.12)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
     dependencies:
@@ -15529,22 +15514,22 @@ snapshots:
     optionalDependencies:
       react-native: 0.76.7(@babel/core@7.25.2)(@babel/preset-env@7.27.2(@babel/core@7.25.2))(@types/react@18.3.12)(encoding@0.1.13)(react@18.3.1)
 
-  mobx-react@9.2.0(mobx@6.13.7)(react-dom@18.2.0(react@18.2.0))(react-native@0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.2.0))(react@18.2.0):
+  mobx-react@9.2.0(mobx@6.13.7)(react-dom@18.3.1(react@18.3.1))(react-native@0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
     dependencies:
       mobx: 6.13.7
-      mobx-react-lite: 4.1.0(mobx@6.13.7)(react-dom@18.2.0(react@18.2.0))(react-native@0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.2.0))(react@18.2.0)
-      react: 18.2.0
+      mobx-react-lite: 4.1.0(mobx@6.13.7)(react-dom@18.3.1(react@18.3.1))(react-native@0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
     optionalDependencies:
-      react-dom: 18.2.0(react@18.2.0)
-      react-native: 0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.2.0)
+      react-dom: 18.3.1(react@18.3.1)
+      react-native: 0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.3.1)
 
-  mobx-react@9.2.0(mobx@6.13.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0):
+  mobx-react@9.2.0(mobx@6.13.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1):
     dependencies:
       mobx: 6.13.7
-      mobx-react-lite: 4.1.0(mobx@6.13.7)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)
-      react: 18.2.0
+      mobx-react-lite: 4.1.0(mobx@6.13.7)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
     optionalDependencies:
-      react-dom: 18.2.0(react@18.2.0)
+      react-dom: 18.3.1(react@18.3.1)
 
   mobx-react@9.2.0(mobx@6.13.7)(react-native@0.76.7(@babel/core@7.25.2)(@babel/preset-env@7.27.2(@babel/core@7.25.2))(@types/react@18.3.12)(encoding@0.1.13)(react@18.3.1))(react@18.3.1):
     dependencies:
@@ -16158,10 +16143,10 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  react-dom@18.2.0(react@18.2.0):
+  react-dom@18.3.1(react@18.3.1):
     dependencies:
       loose-envify: 1.4.0
-      react: 18.2.0
+      react: 18.3.1
       scheduler: 0.23.2
 
   react-is@16.13.1: {}
@@ -16220,7 +16205,7 @@ snapshots:
       - supports-color
       - utf-8-validate
 
-  react-native@0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.2.0):
+  react-native@0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.3.1):
     dependencies:
       '@jest/create-cache-key-function': 29.7.0
       '@react-native/assets-registry': 0.76.7
@@ -16229,7 +16214,7 @@ snapshots:
       '@react-native/gradle-plugin': 0.76.7
       '@react-native/js-polyfills': 0.76.7
       '@react-native/normalize-colors': 0.76.7
-      '@react-native/virtualized-lists': 0.76.7(@types/react@18.3.12)(react-native@0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.2.0))(react@18.2.0)
+      '@react-native/virtualized-lists': 0.76.7(@types/react@18.3.12)(react-native@0.76.7(@babel/core@7.28.6)(@babel/preset-env@7.27.2(@babel/core@7.28.6))(@types/react@18.3.12)(encoding@0.1.13)(react@18.3.1))(react@18.3.1)
       abort-controller: 3.0.0
       anser: 1.4.10
       ansi-regex: 5.0.1
@@ -16251,7 +16236,7 @@ snapshots:
       nullthrows: 1.1.1
       pretty-format: 29.7.0
       promise: 8.3.0
-      react: 18.2.0
+      react: 18.3.1
       react-devtools-core: 5.3.2
       react-refresh: 0.14.2
       regenerator-runtime: 0.13.11
@@ -16275,10 +16260,6 @@ snapshots:
   react-refresh@0.14.2: {}
 
   react-refresh@0.18.0: {}
-
-  react@18.2.0:
-    dependencies:
-      loose-envify: 1.4.0
 
   react@18.3.1:
     dependencies:
@@ -17406,16 +17387,6 @@ snapshots:
 
   ts-interface-checker@0.1.13: {}
 
-  ts-loader@9.5.2(typescript@5.8.2)(webpack@5.97.1(@swc/core@1.10.7)):
-    dependencies:
-      chalk: 4.1.2
-      enhanced-resolve: 5.18.1
-      micromatch: 4.0.8
-      semver: 7.7.2
-      source-map: 0.7.4
-      typescript: 5.8.2
-      webpack: 5.97.1(@swc/core@1.10.7)
-
   ts-node@10.9.2(@swc/core@1.10.7)(@types/node@22.13.11)(typescript@5.8.2):
     dependencies:
       '@cspotcode/source-map-support': 0.8.1
@@ -17629,10 +17600,6 @@ snapshots:
   uri-js@4.4.1:
     dependencies:
       punycode: 2.3.1
-
-  use-sync-external-store@1.5.0(react@18.2.0):
-    dependencies:
-      react: 18.2.0
 
   use-sync-external-store@1.5.0(react@18.3.1):
     dependencies:

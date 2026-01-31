@@ -6,10 +6,10 @@
   "main": "index.js",
   "scripts": {
     "copy:web": "cpy \"../web/dist/**/*\" public",
-    "prestart": "pnpm --filter web build && pnpm run copy:web",
+    "prestart": "nx build web && pnpm run copy:web",
     "start": "electron .",
     "dev": "electron .",
-    "prebuild": "pnpm --filter web build && pnpm run copy:web",
+    "prebuild": "nx build web && pnpm run copy:web",
     "build:mac": "pnpm run prebuild && electron-builder --mac",
     "build:win": "pnpm run prebuild && electron-builder --win",
     "build:linux": "pnpm run prebuild && electron-builder --linux"
@@ -32,6 +32,9 @@
       "index.js",
       "public/**/*"
     ]
+  },
+  "dependencies": {
+    "web": "workspace:*"
   },
   "devDependencies": {
     "electron-builder": "26.0.12",
