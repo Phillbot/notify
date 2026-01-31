@@ -6,6 +6,7 @@
     "orientation": "portrait",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
+    "main": "src/index.ts",
     "splash": {
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
