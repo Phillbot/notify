@@ -7,6 +7,7 @@
   "scripts": {
     "copy:web": "cpy \"../web/dist/**/*\" public",
     "prestart": "nx build web && pnpm run copy:web",
+    "predev": "pnpm run prestart",
     "start": "electron .",
     "dev": "electron .",
     "prebuild": "nx build web && pnpm run copy:web",

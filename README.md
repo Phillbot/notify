@@ -17,9 +17,9 @@
 
 ### Core & Architecture
 
-- [ ] Implement `Disposable` pattern for resource management.
-- [ ] Global SCSS mixins for device detection.
-- [ ] Standardize commit rules (husky + commitlint).
+- [x] Implement `Disposable` pattern for resource management.
+- [x] Global SCSS mixins for device detection.
+- [x] Standardize commit rules (husky + commitlint).
 
 ---
 
