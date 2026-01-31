@@ -37,8 +37,8 @@
     "web": "workspace:*"
   },
   "devDependencies": {
-    "electron-builder": "26.0.12",
-    "electron": "35.1.2",
-    "cpy-cli": "5.0.0"
+    "electron-builder": "catalog:desktop",
+    "electron": "catalog:desktop",
+    "cpy-cli": "catalog:"
   }
 }

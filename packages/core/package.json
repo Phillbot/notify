@@ -9,20 +9,22 @@
   "peerDependencies": {
     "react": "^18.2.0 || ^19.0.0",
     "react-dom": "^18.2.0 || ^19.0.0",
-    "react-native": "0.76.7",
-    "sass": "1.86.0",
+    "react-native": "catalog:mobile",
+    "sass": "catalog:",
+    "sass-embedded": "catalog:",
     "@types/react": "^18.3.12 || ^19.0.0"
   },
   "dependencies": {
-    "mobx-react": "9.2.0",
-    "mobx-react-lite": "4.1.0",
-    "classnames": "2.5.1",
-    "mobx": "6.13.7",
-    "inversify": "6.2.2",
-    "inversify-react": "1.2.0",
-    "reflect-metadata": "0.2.2",
-    "rxjs": "7.8.2",
-    "socket.io": "4.8.1",
-    "socket.io-client": "4.8.1"
+    "mobx-react": "catalog:",
+    "mobx-react-lite": "catalog:",
+    "classnames": "catalog:",
+    "mobx": "catalog:",
+    "inversify": "catalog:",
+    "inversify-react": "catalog:",
+    "reflect-metadata": "catalog:",
+    "rxjs": "catalog:",
+    "socket.io": "catalog:",
+    "socket.io-client": "catalog:",
+    "@types/node": "catalog:"
   }
 }

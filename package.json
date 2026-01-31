@@ -26,10 +26,10 @@
     "server:dev": "nx dev server",
     "server:build": "nx build server",
     "server:start": "nx start server",
-    "install:all": "pnpm install && cd apps/desktop && node node_modules/electron/install.js",
-    "clean:all": "pnpm run clean:modules && pnpm run clean:builds",
-    "clean:modules": "find . -type d -name node_modules -prune -exec rm -rf {} +",
-    "clean:builds": "find . -type d \\( -name 'dist' -o -name 'release' -o -name 'public' \\) -prune -exec rm -rf '{}' +",
+    "clean:all": "pnpm clean:modules && pnpm clean:builds && pnpm clean:cache",
+    "clean:modules": "find . -type d -name \"node_modules\" -prune -exec rm -rf {} +",
+    "clean:builds": "find . -type d \\( -name \"dist\" -o -name \"release\" -o -name \"public\" -o -name \".expo\" -o -name \".next\" \\) -prune -exec rm -rf '{}' +",
+    "clean:cache": "nx reset && find . -type d -name \".vite\" -prune -exec rm -rf {} +",
     "fix": "nx run-many -t lint",
     "nx": "nx",
     "build": "nx run-many -t build",
@@ -39,23 +39,27 @@
     "graph": "nx graph"
   },
   "devDependencies": {
-    "@types/node": "22.13.11",
-    "@typescript-eslint/eslint-plugin": "6.21.0",
-    "@typescript-eslint/parser": "6.21.0",
-    "concurrently": "9.1.2",
-    "eslint": "8.57.0",
-    "eslint-import-resolver-typescript": "^4.4.4",
-    "eslint-plugin-import": "2.31.0",
-    "eslint-plugin-jsx-a11y": "6.10.2",
-    "eslint-plugin-react": "7.37.4",
-    "eslint-plugin-react-hooks": "5.2.0",
-    "globals": "16.0.0",
-    "prettier": "3.6.2",
-    "ts-node": "10.9.2",
-    "tsconfig-paths": "4.2.0",
-    "typescript": "5.8.2",
-    "typescript-eslint": "8.20.0",
-    "vite": "7.3.1",
-    "nx": "22.4.4"
+    "@types/node": "catalog:",
+    "@typescript-eslint/eslint-plugin": "catalog:",
+    "@typescript-eslint/parser": "catalog:",
+    "eslint": "catalog:",
+    "eslint-import-resolver-typescript": "catalog:",
+    "eslint-plugin-import": "catalog:",
+    "eslint-plugin-jsx-a11y": "catalog:",
+    "eslint-plugin-react": "catalog:",
+    "eslint-plugin-react-hooks": "catalog:",
+    "globals": "catalog:",
+    "prettier": "catalog:",
+    "typescript": "catalog:",
+    "vite": "catalog:",
+    "nx": "catalog:"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "electron",
+      "nx",
+      "esbuild",
+      "@swc/core"
+    ]
   }
 }

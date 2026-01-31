@@ -4,32 +4,31 @@
   "private": true,
   "scripts": {
     "build": "nest build",
-    "dev": "nest start --watch",
+    "dev": "nest start --watch --entryFile apps/server/src/main",
     "start": "nest start",
     "start:debug": "nest start --debug --watch",
-    "start:prod": "node dist/main",
+    "start:prod": "node dist/apps/server/src/main",
     "lint": "eslint \"src/**/*.ts\" --fix"
   },
   "dependencies": {
-    "@nestjs/common": "11.0.1",
-    "@nestjs/core": "11.0.1",
-    "@nestjs/platform-express": "11.0.1",
-    "@nestjs/platform-socket.io": "11.0.12",
-    "@nestjs/websockets": "11.0.12",
+    "@nestjs/common": "catalog:",
+    "@nestjs/core": "catalog:",
+    "@nestjs/platform-express": "catalog:",
+    "@nestjs/platform-socket.io": "catalog:",
+    "@nestjs/websockets": "catalog:",
     "core": "workspace:*",
-    "ws": "8.18.1"
-  },
-  "peerDependencies": {
-    "reflect-metadata": "0.2.2",
-    "rxjs": "7.8.2"
+    "ws": "catalog:",
+    "reflect-metadata": "catalog:",
+    "rxjs": "catalog:"
   },
   "devDependencies": {
-    "@nestjs/cli": "11.0.0",
-    "@nestjs/schematics": "11.0.0",
-    "@nestjs/testing": "11.0.1",
-    "@swc/cli": "0.6.0",
-    "@swc/core": "1.10.7",
-    "@types/express": "5.0.0",
-    "@types/ws": "8.18.1"
+    "@nestjs/cli": "catalog:",
+    "@nestjs/schematics": "catalog:",
+    "@nestjs/testing": "catalog:",
+    "@swc/cli": "catalog:",
+    "@swc/core": "catalog:",
+    "@types/express": "catalog:",
+    "@types/ws": "catalog:",
+    "@types/node": "catalog:"
   }
 }

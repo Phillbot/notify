@@ -18,25 +18,27 @@
     "lint": "eslint \"src/**/*.{ts,tsx}\" --fix"
   },
   "dependencies": {
-    "@babel/runtime": "7.27.0",
+    "@babel/runtime": "catalog:",
     "core": "workspace:*",
-    "expo": "~52.0.41",
-    "expo-status-bar": "~2.0.1",
-    "react": "18.3.1",
-    "react-native": "0.76.7"
+    "expo": "catalog:mobile",
+    "expo-status-bar": "catalog:mobile",
+    "react": "catalog:react18",
+    "react-native": "catalog:mobile",
+    "mobx-react": "catalog:",
+    "mobx-react-lite": "catalog:",
+    "mobx": "catalog:",
+    "inversify": "catalog:",
+    "inversify-react": "catalog:",
+    "reflect-metadata": "catalog:",
+    "rxjs": "catalog:",
+    "socket.io-client": "catalog:",
+    "react-native-web": "catalog:mobile",
+    "react-dom": "catalog:react18"
   },
   "devDependencies": {
-    "@babel/core": "7.25.2",
-    "@types/react": "18.3.12"
-  },
-  "peerDependencies": {
-    "mobx-react": "9.2.0",
-    "mobx-react-lite": "4.1.0",
-    "mobx": "6.13.7",
-    "inversify": "6.2.2",
-    "inversify-react": "1.2.0",
-    "reflect-metadata": "0.2.2",
-    "rxjs": "7.8.2",
-    "socket.io-client": "4.8.1"
+    "babel-preset-expo": "catalog:mobile",
+    "babel-plugin-transform-typescript-metadata": "catalog:",
+    "@babel/core": "catalog:",
+    "@types/react": "catalog:react18"
   }
 }
