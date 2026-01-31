@@ -8,7 +8,7 @@ import { Action, ICounterStore } from "~core/stores/counter";
 @observer
 export class App extends Component {
   @resolve(ICounterStore.$)
-  private readonly _counterStore!: ICounterStore;
+  declare private readonly _counterStore: ICounterStore;
 
   override state = {
     a: 0,
