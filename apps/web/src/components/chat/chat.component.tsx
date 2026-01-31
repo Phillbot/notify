@@ -1,6 +1,6 @@
 import { Component, ChangeEvent, createRef } from "react";
 
-import styles from './chat.module.scss';
+import styles from "./chat.module.scss";
 
 interface ChatMessage {
   from: "client" | "server";
@@ -34,7 +34,10 @@ export class Chat extends Component<unknown, State> {
         const parsed = JSON.parse(event.data);
         if (typeof parsed?.text === "string") {
           this.setState((prev) => ({
-            response: [...prev.response, { from: "server", text: JSON.parse(parsed.text)?.text }],
+            response: [
+              ...prev.response,
+              { from: "server", text: JSON.parse(parsed.text)?.text },
+            ],
           }));
         }
       } catch {
@@ -92,8 +95,13 @@ export class Chat extends Component<unknown, State> {
       <div className={styles.chat}>
         <ul ref={this.chatListRef} className={styles.chatList}>
           {response.map((msg, idx) => (
-            <li key={idx} className={`${styles.chatMessage} ${styles[msg.from]}`}>
-              <span>{msg.from}:{msg.text}</span>
+            <li
+              key={idx}
+              className={`${styles.chatMessage} ${styles[msg.from]}`}
+            >
+              <span>
+                {msg.from}:{msg.text}
+              </span>
             </li>
           ))}
         </ul>

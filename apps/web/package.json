@@ -4,23 +4,20 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "predev": "pnpm run clean:types",
-    "dev": "concurrently \"vite\" \"pnpm run styles:watch\"",
+    "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "styles": "npx typed-scss-modules . --pattern '**/*.module.scss' --camelCase",
-    "styles:watch": "npx typed-scss-modules . --watch --pattern '**/*.module.scss' --camelCase --ignore '**/{node_modules,dist,.git}/**'",
-    "clean:types": "find . -name '*.module.scss.d.ts' -exec rm -f {} +",
+    "clean:types": "find src -name '*.module.scss.d.ts' -delete",
     "lint:styles": "stylelint '**/*.{scss,css}'",
     "format:styles": "stylelint '**/*.{scss,css}' --fix"
   },
   "peerDependencies": {
-    "mobx-react": "9.2.0",
-    "mobx-react-lite": "4.1.0",
     "classnames": "2.5.1",
-    "mobx": "6.13.7",
     "inversify": "6.2.2",
     "inversify-react": "1.2.0",
+    "mobx": "6.13.7",
+    "mobx-react": "9.2.0",
+    "mobx-react-lite": "4.1.0",
     "reflect-metadata": "0.2.2",
     "rxjs": "7.8.2"
   },
@@ -36,7 +33,6 @@
     "@stylistic/stylelint-plugin": "^3.1.2",
     "@types/react": "18.3.12",
     "@types/react-dom": "18.2.0",
-    "@vitejs/plugin-react": "4.3.4",
     "autoprefixer": "10.4.21",
     "babel-plugin-transform-typescript-metadata": "0.3.2",
     "postcss": "8.5.3",
@@ -45,6 +41,6 @@
     "stylelint": "16.16.0",
     "stylelint-config-standard": "37.0.0",
     "stylelint-config-standard-scss": "14.0.0",
-    "typed-scss-modules": "8.1.1"
+    "vite-plugin-sass-dts": "^1.3.34"
   }
 }

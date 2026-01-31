@@ -2,6 +2,7 @@ import { Component, ReactElement } from "react";
 import { resolve } from "inversify-react";
 import { observer } from "mobx-react";
 
+import { FitText } from "~core/react";
 import { Action, ICounterStore } from "~core/stores/counter/types";
 
 import styles from "./counter.module.scss";
@@ -13,11 +14,12 @@ export class Counter extends Component {
 
   override render() {
     const { count } = this._counterStore;
-    console.log('render');
 
     return (
       <div className={styles.counter}>
-        <div className={styles.counterDisplay}>{count}</div>
+        <div className={styles.counterDisplay}>
+          <FitText>{count}</FitText>
+        </div>
         <div className={styles.counterButtonPanel}>{this.buttons}</div>
       </div>
     );

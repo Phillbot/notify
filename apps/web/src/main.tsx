@@ -4,9 +4,8 @@ import { Provider } from "inversify-react";
 
 import { isDev } from "~core/utils";
 
-import { App } from "~web-components/app.component";
-
-import { webContainer } from "./web.module";
+import { App } from "@/components/app.component";
+import { webContainer } from "@/web.module";
 
 import './reset.css'
 

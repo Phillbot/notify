@@ -2,6 +2,7 @@ import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
 import react from "@vitejs/plugin-react";
 import { defineConfig } from "vite";
+import sassDts from 'vite-plugin-sass-dts'
 import { sharedViteConfig } from "../../vite.config";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -30,7 +31,12 @@ export default defineConfig({
           ["@babel/plugin-transform-class-properties", { loose: true }]
         ]
       }
-    })
+    }),
+    sassDts({
+      enabledMode: ['development', 'production'],
+      sourceDir: resolve(__dirname, 'src'),
+      outputDir: resolve(__dirname, 'src/__generated__/styles'),
+    }),
   ],
   resolve: {
     alias: {
@@ -39,7 +45,8 @@ export default defineConfig({
       "~core/di": resolve(__dirname, "../../packages/core/shared/di"),
       "~core/react": resolve(__dirname, "../../packages/core/react"),
       "~core/stores": resolve(__dirname, "../../packages/core/stores"),
-      "~web-components": resolve(__dirname, "../../apps/web/components")
+      "~web-components": resolve(__dirname, "src/components"),
+      "@": resolve(__dirname, "src")
     }
   }
 });
