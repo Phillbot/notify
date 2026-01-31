@@ -5,7 +5,7 @@ import { isDev } from '~core/utils';
 
 @Injectable()
 export class AppGateway implements OnModuleInit {
-  private wss: WebSocketServer;
+  private wss!: WebSocketServer;
 
   onModuleInit() {
 
