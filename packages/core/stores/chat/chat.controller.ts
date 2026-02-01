@@ -15,6 +15,9 @@ export class ChatController {
   @observable
   public tempNickname = "";
 
+  @observable
+  public isSidebarOpen = false;
+
   @inject(IChatStore.$)
   protected readonly _chatStore!: IChatStore;
 
@@ -78,6 +81,18 @@ export class ChatController {
     }
   }
 
+  public handleMessageKeyDown(key: string): void {
+    if (key === "Enter") {
+      this.sendMessage();
+    }
+  }
+
+  public handleNicknameKeyDown(key: string): void {
+    if (key === "Enter") {
+      this.join();
+    }
+  }
+
   @computed
   public get isConnected(): boolean {
     return this._chatStore.isConnected;
@@ -94,7 +109,48 @@ export class ChatController {
   }
 
   @computed
+  public get currentRoomId(): string {
+    return this._chatStore.currentRoomId;
+  }
+
+  @action
+  public setCurrentRoom(roomId: string): void {
+    this._chatStore.setCurrentRoom(roomId);
+    this.isSidebarOpen = false; // Auto close on mobile
+  }
+
+  @action
+  public toggleSidebar(): void {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
+
+  @computed
+  public get unreadCounts(): Map<string, number> {
+    return this._chatStore.unreadCounts;
+  }
+
+  @computed
   public get messages() {
     return this._chatStore.messages;
+  }
+
+  @computed
+  public get onlineUsers() {
+    return this._chatStore.onlineUsers;
+  }
+
+  @computed
+  public get userId(): string {
+    return this._chatStore.userId;
+  }
+
+  @action
+  public openDirectMessage(targetUserId: string): void {
+    const currentUserId = this.userId;
+    if (!currentUserId || !targetUserId || currentUserId === targetUserId) return;
+
+    // Stable DM room ID: dm:sorted_uuids
+    const roomId = `dm:${[currentUserId, targetUserId].sort().join("_")}`;
+    this.setCurrentRoom(roomId);
   }
 }
