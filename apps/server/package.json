@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build": "nest build",
-    "dev": "nest start --watch --entryFile apps/server/src/main",
+    "dev": "nest start --watch",
     "start": "nest start",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/apps/server/src/main",
@@ -16,10 +16,12 @@
     "@nestjs/platform-express": "catalog:",
     "@nestjs/platform-socket.io": "catalog:",
     "@nestjs/websockets": "catalog:",
+    "@prisma/client": "catalog:",
     "core": "workspace:*",
-    "ws": "catalog:",
     "reflect-metadata": "catalog:",
-    "rxjs": "catalog:"
+    "rxjs": "catalog:",
+    "socket.io": "catalog:",
+    "ws": "catalog:"
   },
   "devDependencies": {
     "@nestjs/cli": "catalog:",
@@ -28,7 +30,9 @@
     "@swc/cli": "catalog:",
     "@swc/core": "catalog:",
     "@types/express": "catalog:",
+    "@types/node": "catalog:",
     "@types/ws": "catalog:",
-    "@types/node": "catalog:"
+    "prisma": "catalog:",
+    "ts-loader": "catalog:"
   }
 }

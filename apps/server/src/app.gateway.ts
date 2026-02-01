@@ -1,59 +1,93 @@
-import { Injectable, OnModuleInit } from "@nestjs/common";
-import { WebSocketServer, WebSocket } from "ws";
+import {
+  WebSocketGateway,
+  WebSocketServer,
+  OnGatewayInit,
+  OnGatewayConnection,
+  OnGatewayDisconnect,
+  SubscribeMessage,
+  MessageBody,
+  ConnectedSocket,
+} from "@nestjs/websockets";
+import { Server, Socket } from "socket.io";
 
 import { PORTS } from "~core/config";
 
-@Injectable()
-export class AppGateway implements OnModuleInit {
-  private wss!: WebSocketServer;
+import { PrismaService } from "@/prisma/prisma.service";
 
-  onModuleInit() {
-    console.log(`🚀 Starting WebSocket server on port ${PORTS.SERVER_WS}...`);
-    this.wss = new WebSocketServer({ port: PORTS.SERVER_WS, host: "0.0.0.0" });
+@WebSocketGateway(PORTS.SERVER_WS, {
+  cors: {
+    origin: "*",
+  },
+})
+export class AppGateway
+  implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
+  @WebSocketServer()
+  server!: Server;
 
-    this.wss.on("listening", () => {
-      console.log(`✅ WebSocket server is listening on port ${PORTS.SERVER_WS}`);
-    });
+  constructor(private readonly prisma: PrismaService) { }
 
-    this.wss.on("error", (error) => {
-      console.error("❌ WebSocket server error:", error);
-    });
+  afterInit(_server: Server) {
+    console.log(`🚀 Socket.io server initialized on port ${PORTS.SERVER_WS}`);
+  }
 
-    this.wss.on("connection", (ws: WebSocket) => {
-      const clientId = Math.random().toString(36).substring(7);
-      (ws as any).id = clientId;
+  async handleConnection(client: Socket) {
+    console.log(`🤝 New connection: ${client.id}. Total: ${this.server.sockets.sockets.size}`);
 
-      console.log(`🤝 New connection: ${clientId}. Total: ${this.wss.clients.size}`);
-
-      ws.on("message", (message: string) => {
-        try {
-          const rawMessage = message.toString();
-          const parsed = JSON.parse(rawMessage);
-
-          const senderName = parsed.userName || `User ${clientId}`;
-          const reply = JSON.stringify({
-            from: senderName,
-            text: parsed.text,
-            senderId: clientId,
-          });
-
-          // Broadcast to all connected clients
-          console.log(`📣 From ${senderName} (${clientId}): ${parsed.text} (to ${this.wss.clients.size} clients)`);
-
-          this.wss.clients.forEach((client) => {
-            if (client.readyState === WebSocket.OPEN) {
-              client.send(reply);
-            }
-          });
-        } catch (error) {
-          console.error("❌ Failed to broadcast message:", error);
-        }
+    // Send history
+    try {
+      const history = await this.prisma.message.findMany({
+        take: 50,
+        orderBy: { createdAt: "asc" },
       });
 
-      ws.on("close", () => {
-        const remaining = this.wss.clients.size;
-        console.log(`🔌 Client disconnected. Remaining clients: ${remaining}`);
+      const historyPayload = history.map((msg) => ({
+        from: msg.senderName || "Unknown",
+        text: msg.text,
+        senderId: msg.senderId || "system",
+      }));
+
+      // In socket.io we can emit a named event
+      client.emit("history", historyPayload);
+    } catch (error) {
+      console.error("❌ Failed to load history:", error);
+    }
+  }
+
+  handleDisconnect(client: Socket) {
+    console.log(`🔌 Client disconnected: ${client.id}. Remaining: ${this.server.sockets.sockets.size}`);
+  }
+
+  @SubscribeMessage("message")
+  async handleMessage(
+    @MessageBody() data: any,
+    @ConnectedSocket() client: Socket
+  ) {
+    try {
+      // In socket.io, data is already parsed if sent as JSON
+      const senderName = data.userName || `User ${client.id}`;
+
+      const reply = {
+        from: senderName,
+        text: data.text,
+        senderId: client.id,
+      };
+
+      // Broadcast to all clients including sender
+      console.log(`📣 From ${senderName} (${client.id}): ${data.text}`);
+      this.server.emit("message", reply);
+
+      // Save to DB asynchronously
+      this.prisma.message.create({
+        data: {
+          text: data.text,
+          senderName: senderName,
+          senderId: client.id,
+        },
+      }).catch(err => {
+        console.error("❌ Failed to save message to DB:", err);
       });
-    });
+    } catch (error) {
+      console.error("❌ Failed to process message:", error);
+    }
   }
 }
