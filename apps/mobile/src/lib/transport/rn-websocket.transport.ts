@@ -9,8 +9,8 @@ import { IChatTransport } from "~core/stores/chat";
 @injectable()
 export class RNWebSocketTransport implements IChatTransport {
   private _socket: Socket | null = null;
-  private _messageCallback: ((data: string) => void) | null = null;
   private _stateChangeCallback: (() => void) | null = null;
+  private _eventListeners = new Map<string, Array<(data: any) => void>>();
 
   get isConnected(): boolean {
     return this._socket?.connected ?? false;
@@ -27,9 +27,15 @@ export class RNWebSocketTransport implements IChatTransport {
     const socketUrl = url.replace(/^ws/, "http");
 
     this._socket = io(socketUrl, {
+      transports: ["websocket"],
       reconnection: true,
       reconnectionAttempts: Infinity,
       reconnectionDelay: 1000,
+    });
+
+    // Apply queued listeners
+    this._eventListeners.forEach((callbacks, event) => {
+      callbacks.forEach(cb => this._socket?.on(event, cb));
     });
 
     this._socket.on("connect", () => {
@@ -45,21 +51,6 @@ export class RNWebSocketTransport implements IChatTransport {
     this._socket.on("connect_error", (error) => {
       console.error("❗ [RN] Socket.io error:", error);
       this._stateChangeCallback?.();
-    });
-
-    this._socket.on("message", (data) => {
-      if (this._messageCallback) {
-        const payload = typeof data === "string" ? data : JSON.stringify(data);
-        this._messageCallback(payload);
-      }
-    });
-
-    this._socket.on("history", (data) => {
-      if (this._messageCallback && Array.isArray(data)) {
-        data.forEach(msg => {
-          this._messageCallback!(JSON.stringify(msg));
-        });
-      }
     });
   }
 
@@ -80,11 +71,22 @@ export class RNWebSocketTransport implements IChatTransport {
     }
   }
 
-  onMessage(callback: (data: string) => void): void {
-    this._messageCallback = callback;
+  onEvent<T = any>(event: string, callback: (data: T) => void): void {
+    if (!this._eventListeners.has(event)) {
+      this._eventListeners.set(event, []);
+    }
+    this._eventListeners.get(event)?.push(callback);
+
+    this._socket?.on(event, callback);
   }
 
   onStateChange(callback: () => void): void {
     this._stateChangeCallback = callback;
+  }
+
+  emit<T = any>(event: string, data: T): void {
+    if (this.isConnected) {
+      this._socket?.emit(event, data);
+    }
   }
 }
