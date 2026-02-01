@@ -1,59 +1,82 @@
+import { io, Socket } from "socket.io-client";
 import { injectable } from "inversify";
 
 import { IChatTransport } from "~core/stores/chat";
 
 /**
- * React Native WebSocket transport implementation.
- * Uses the native WebSocket API available in React Native.
+ * React Native WebSocket transport implementation using Socket.io.
  */
 @injectable()
 export class RNWebSocketTransport implements IChatTransport {
-  private _socket: WebSocket | null = null;
+  private _socket: Socket | null = null;
   private _messageCallback: ((data: string) => void) | null = null;
   private _stateChangeCallback: (() => void) | null = null;
 
   get isConnected(): boolean {
-    return this._socket?.readyState === WebSocket.OPEN;
+    return this._socket?.connected ?? false;
   }
 
   connect(url: string): void {
-    if (this._socket && (this._socket.readyState === WebSocket.OPEN || this._socket.readyState === WebSocket.CONNECTING)) {
+    if (this._socket) {
+      if (this._socket.connected) return;
+      this._socket.connect();
       return;
     }
 
-    this._socket = new WebSocket(url);
+    // Transform ws:// to http://
+    const socketUrl = url.replace(/^ws/, "http");
 
-    this._socket.addEventListener("open", () => {
-      console.log("🟢 [RN] WebSocket connected");
+    this._socket = io(socketUrl, {
+      reconnection: true,
+      reconnectionAttempts: Infinity,
+      reconnectionDelay: 1000,
+    });
+
+    this._socket.on("connect", () => {
+      console.log("🟢 [RN] Socket.io connected:", this._socket?.id);
       this._stateChangeCallback?.();
     });
 
-    this._socket.addEventListener("message", (event) => {
+    this._socket.on("disconnect", (reason) => {
+      console.warn("🔌 [RN] Socket.io disconnected:", reason);
+      this._stateChangeCallback?.();
+    });
+
+    this._socket.on("connect_error", (error) => {
+      console.error("❗ [RN] Socket.io error:", error);
+      this._stateChangeCallback?.();
+    });
+
+    this._socket.on("message", (data) => {
       if (this._messageCallback) {
-        this._messageCallback(event.data);
+        const payload = typeof data === "string" ? data : JSON.stringify(data);
+        this._messageCallback(payload);
       }
     });
 
-    this._socket.addEventListener("error", (event) => {
-      console.error("❗ [RN] WebSocket error:", event);
-      this._stateChangeCallback?.();
-    });
-
-    this._socket.addEventListener("close", (event) => {
-      console.warn("🔌 [RN] WebSocket closed:", event.code, event.reason);
-      this._stateChangeCallback?.();
+    this._socket.on("history", (data) => {
+      if (this._messageCallback && Array.isArray(data)) {
+        data.forEach(msg => {
+          this._messageCallback!(JSON.stringify(msg));
+        });
+      }
     });
   }
 
   disconnect(): void {
-    this._socket?.close();
+    this._socket?.disconnect();
     this._socket = null;
     this._stateChangeCallback?.();
   }
 
   send(data: string): void {
     if (this.isConnected) {
-      this._socket?.send(data);
+      try {
+        const parsed = JSON.parse(data);
+        this._socket?.emit("message", parsed);
+      } catch {
+        this._socket?.emit("message", data);
+      }
     }
   }
 

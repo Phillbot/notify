@@ -23,7 +23,8 @@
     "mobx-react": "catalog:",
     "mobx-react-lite": "catalog:",
     "reflect-metadata": "catalog:",
-    "rxjs": "catalog:"
+    "rxjs": "catalog:",
+    "socket.io-client": "catalog:"
   },
   "devDependencies": {
     "@babel/plugin-proposal-decorators": "catalog:",

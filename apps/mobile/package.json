@@ -29,6 +29,7 @@
     "expo-modules-core": "catalog:mobile",
     "expo-status-bar": "catalog:mobile",
     "expo-system-ui": "catalog:mobile",
+    "expo-constants": "catalog:default",
     "inversify": "catalog:",
     "inversify-react": "catalog:",
     "mobx": "catalog:",
