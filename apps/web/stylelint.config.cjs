@@ -45,5 +45,12 @@ module.exports = {
     "color-hex-length": "long",
     "block-no-empty": true,
     "declaration-block-no-duplicate-properties": true,
+    "property-no-vendor-prefix": null,
+    "selector-class-pattern": [
+      "^[a-z]([a-z0-9-]+)?(__([a-z0-9-]+))?(_([a-z0-9-]+))?$",
+      {
+        message: "Expected class selector to be BEM kebab-case (e.g., .block__element_modifier)",
+      },
+    ],
   },
 };
