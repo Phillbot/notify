@@ -26,7 +26,7 @@
     border-radius: 3px;
   }
 
-  &-avatar {
+  &__avatar {
     width: 40px;
     height: 40px;
     border-radius: 12px;
@@ -40,7 +40,7 @@
     box-shadow: 0 4px 6px rgb(0 0 0 / 5%);
   }
 
-  &-content {
+  &__content {
     background: white;
     padding: 1rem;
     border-radius: 16px;
@@ -49,20 +49,20 @@
     border: 1px solid #f1f5f9;
   }
 
-  &-sender {
+  &__sender {
     font-size: 0.8rem;
     font-weight: 600;
     color: #6366f1;
     margin-bottom: 4px;
   }
 
-  &-text {
+  &__text {
     color: #1e293b;
     line-height: 1.5;
     font-size: 0.95rem;
   }
 
-  &-item {
+  &__item {
     display: flex;
     gap: 1rem;
     max-width: 80%;
@@ -73,11 +73,11 @@
 
     animation: slide-up 0.3s ease-out;
 
-    &-own {
+    &_own {
       align-self: flex-end;
       flex-direction: row-reverse;
 
-      .chat-messages-content {
+      .chat-messages__content {
         background: #6366f1;
         border-radius: 16px;
         border-top-right-radius: 2px;
@@ -86,22 +86,22 @@
         box-shadow: 0 4px 15px rgb(99 102 241 / 20%);
       }
 
-      .chat-messages-sender {
+      .chat-messages__sender {
         display: none;
       }
 
-      .chat-messages-text {
+      .chat-messages__text {
         color: white;
       }
 
-      .chat-messages-avatar {
+      .chat-messages__avatar {
         background: linear-gradient(135deg, #818cf8 0%, #6366f1 100%);
         color: white;
       }
     }
   }
 
-  &-empty {
+  &__empty {
     text-align: center;
     color: #94a3b8;
     margin: auto;
