@@ -6,9 +6,9 @@ import { IChatTransport } from "~core/stores/chat";
 @injectable()
 export class WebSocketTransport implements IChatTransport {
   private _socket: Socket | null = null;
-  private _messageCallback: ((data: string) => void) | null = null;
   private _stateChangeCallback: (() => void) | null = null;
   private _isUnloading = false;
+  private _eventListeners = new Map<string, Array<(data: any) => void>>();
 
   get isConnected(): boolean {
     return this._socket?.connected ?? false;
@@ -47,6 +47,11 @@ export class WebSocketTransport implements IChatTransport {
       reconnectionDelayMax: 5000,
     });
 
+    // Apply queued listeners
+    this._eventListeners.forEach((callbacks, event) => {
+      callbacks.forEach(cb => this._socket?.on(event, cb));
+    });
+
     this._socket.on("connect", () => {
       console.log("🟢 Socket.io connected:", this._socket?.id);
       this._stateChangeCallback?.();
@@ -60,25 +65,6 @@ export class WebSocketTransport implements IChatTransport {
     this._socket.on("connect_error", (error) => {
       console.error("❗Socket.io connection error:", error);
       this._stateChangeCallback?.();
-    });
-
-    this._socket.on("message", (data) => {
-      if (this._messageCallback) {
-        // Socket.io sends already parsed objects usually,
-        // but our store expects string to parse it itself (as per previous logic)
-        // Let's stringify if it's an object to keep store logic unchanged for now
-        const payload = typeof data === "string" ? data : JSON.stringify(data);
-        this._messageCallback(payload);
-      }
-    });
-
-    // Special event for history
-    this._socket.on("history", (data) => {
-      if (this._messageCallback && Array.isArray(data)) {
-        data.forEach(msg => {
-          this._messageCallback!(JSON.stringify(msg));
-        });
-      }
     });
   }
 
@@ -99,11 +85,23 @@ export class WebSocketTransport implements IChatTransport {
     }
   }
 
-  onMessage(callback: (data: string) => void): void {
-    this._messageCallback = callback;
+  onEvent<T = any>(event: string, callback: (data: T) => void): void {
+    if (!this._eventListeners.has(event)) {
+      this._eventListeners.set(event, []);
+    }
+    this._eventListeners.get(event)?.push(callback);
+
+    // If socket already exists, subscribe immediately
+    this._socket?.on(event, callback);
   }
 
   onStateChange(callback: () => void): void {
     this._stateChangeCallback = callback;
+  }
+
+  emit<T = any>(event: string, data: T): void {
+    if (this.isConnected) {
+      this._socket?.emit(event, data);
+    }
   }
 }

@@ -11,14 +11,12 @@ export class LoginView extends Component {
   @resolve(ChatController)
   declare private readonly _controller: ChatController;
 
-  handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  private readonly _handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     this._controller.setTempNickname(e.target.value);
   };
 
-  handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === "Enter") {
-      this._controller.join();
-    }
+  private readonly _handleKeyDown = (e: React.KeyboardEvent) => {
+    this._controller.handleNicknameKeyDown(e.key);
   };
 
   override render() {
@@ -35,8 +33,8 @@ export class LoginView extends Component {
           <div className={styles.loginViewInputGroup}>
             <input
               value={tempNickname}
-              onChange={this.handleChange}
-              onKeyDown={this.handleKeyDown}
+              onChange={this._handleChange}
+              onKeyDown={this._handleKeyDown}
               placeholder="Your awesome nickname"
             />
             <button

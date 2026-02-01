@@ -10,6 +10,8 @@ import { ChatInput } from "./input/chat-input.component";
 import { LoginView } from "./login/login-view.component";
 import { ConnectingState } from "./connecting/connecting-state.component";
 
+import { ChatSidebar } from "./sidebar/chat-sidebar.component";
+
 import styles from "./chat.module.scss";
 
 @observer
@@ -33,10 +35,13 @@ export class Chat extends Component {
     }
 
     return (
-      <div className={styles.chat}>
-        <ChatHeader />
-        <ChatMessages />
-        <ChatInput />
+      <div className={styles.chatContainer}>
+        <ChatSidebar />
+        <div className={styles.chatContainerMain}>
+          <ChatHeader />
+          <ChatMessages />
+          <ChatInput />
+        </div>
       </div>
     );
   }
