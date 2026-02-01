@@ -35,7 +35,13 @@ export const ENDPOINTS = {
 export function getWebSocketUrl(options?: {
   /** Use device IP for physical device testing */
   deviceIp?: string;
+  /** Explicit host to use */
+  host?: string;
 }): string {
+  if (options?.host) {
+    return `ws://${options.host}:${PORTS.SERVER_WS}`;
+  }
+
   if (options?.deviceIp) {
     return ENDPOINTS.WS_URL_DEVICE(options.deviceIp);
   }

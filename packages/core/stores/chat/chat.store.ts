@@ -14,6 +14,9 @@ export class ChatStore implements IChatStore {
   @observable
   private _userName = "";
 
+  @observable
+  private _connectionUrl = "";
+
   constructor(
     @inject(IChatTransport.$)
     private readonly _transport: IChatTransport
@@ -40,6 +43,11 @@ export class ChatStore implements IChatStore {
     return this._userName;
   }
 
+  @computed
+  get connectionUrl(): string {
+    return this._connectionUrl;
+  }
+
   @action
   setUserName(name: string): void {
     this._userName = name;
@@ -57,6 +65,7 @@ export class ChatStore implements IChatStore {
       return;
     }
 
+    this._connectionUrl = url;
     this._transport.connect(url);
 
     this._transport.onMessage((data) => {

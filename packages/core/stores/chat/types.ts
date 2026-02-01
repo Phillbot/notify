@@ -23,6 +23,7 @@ export interface IChatStore {
   readonly messages: ChatMessage[];
   readonly isConnected: boolean;
   readonly userName: string;
+  readonly connectionUrl: string;
   connect(url: string): void;
   disconnect(): void;
   setUserName(name: string): void;

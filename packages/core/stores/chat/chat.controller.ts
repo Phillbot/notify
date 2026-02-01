@@ -1,4 +1,4 @@
-import { action, makeObservable, observable, runInAction } from "mobx";
+import { action, computed, makeObservable, observable, runInAction } from "mobx";
 import { inject, injectable } from "inversify";
 
 import { IChatStore } from "./types";
@@ -78,14 +78,22 @@ export class ChatController {
     }
   }
 
+  @computed
   public get isConnected(): boolean {
     return this._chatStore.isConnected;
   }
 
+  @computed
   public get userName(): string {
     return this._chatStore.userName;
   }
 
+  @computed
+  public get connectionUrl(): string {
+    return this._chatStore.connectionUrl;
+  }
+
+  @computed
   public get messages() {
     return this._chatStore.messages;
   }
