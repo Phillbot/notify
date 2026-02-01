@@ -34,9 +34,34 @@
 - [ ] **UI Library Expansion**: Formalize `packages/ui-lib` to share **Design Tokens** (colors, typography, spacing) instead of full components.
 - [ ] **API Client**: Create a unified API client in `core`.
 
-### Features
+### Project Roadmap
 
-- [ ] **Auth Flow**: Implement authentication logic in `core` and connect UI in all 3 apps.
+#### 📱 Mobile & Web UI
+
+- [x] **Mobile Sidebar**: Toggleable sidebar with backdrop and sliding animation.
+- [x] **Real-time Notifications**: Unread message badges (counters) for channels and DMs.
+- [x] **BEM Standard**: Full styles refactor to BEM kebab-case with TypeScript support.
+- [ ] **UI Library Expansion**: Formalize `packages/ui-lib` to share Design Tokens.
+
+#### 🖥️ Desktop (Electron)
+
+- [x] **Native Constraints**: Enforced minimum window sizes (minWidth/minHeight).
+- [x] **Branding**: Dynamic window title with versioning (Notify vX.X.X).
+- [ ] **Custom Title Bar**: Native-looking custom header with custom window controls.
+- [ ] **Tray Integration**: App icon in system tray and background mode.
+
+#### 👤 Profile & Social
+
+- [ ] **Authentication**: Identity management (SignUp/SignIn) and persistent sessions.
+- [ ] **Room Management**: Dynamic creation of channels and user invitation system.
+- [ ] **Profile Customization**: Live name changes and avatar uploads.
+- [ ] **Global Settings**: Centralized configuration for themes and notification preferences.
+
+#### 🔐 Security & Architecture
+
+- [x] **Persistence**: PostgreSQL integration for message history and user stability.
+- [ ] **ID Validation**: Guaranteed uniqueness and validation for user/room identifiers.
+- [ ] **E2EE**: End-to-end encryption research for Direct Messages.
 
 ---
 
