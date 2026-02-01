@@ -29,24 +29,6 @@ export function isValidPhoneNumber(phone: string): boolean {
 }
 
 /**
- * Checks if the provided value is a non-empty string.
- * @param value - The value to check.
- * @returns True if the value is a non-empty string, false otherwise.
- */
-export function isNonEmptyString(value: string): boolean {
-  return typeof value === "string" && value.trim() !== "";
-}
-
-/**
- * Checks if the provided value is a number greater than or equal to zero.
- * @param value - The value to check.
- * @returns True if the value is a number greater than or equal to zero, false otherwise.
- */
-export function isPositiveNumber(value: number): boolean {
-  return typeof value === "number" && value >= 0;
-}
-
-/**
  * Validates if the provided value is a valid date string.
  * @param value - The value to check.
  * @returns True if the value is a valid date string, false otherwise.

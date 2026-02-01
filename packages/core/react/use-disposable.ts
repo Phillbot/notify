@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-
-import { DisposableStore, IDisposable } from "~core/utils";
+import { DisposableStore, IDisposable } from "handy-ts-tools";
 
 /**
  * Hook to manage a Disposable resource.

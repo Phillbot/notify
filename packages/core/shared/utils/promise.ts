@@ -1,25 +1,4 @@
-/**
- * Waits for a given number of milliseconds.
- *
- * @param ms - Milliseconds to wait
- * @returns A promise that resolves after the given delay
- */
-export function wait(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
-
-/**
- * Wraps a promise with a timeout. Rejects if timeout is exceeded.
- *
- * @param promise - The promise to wrap
- * @param ms - Timeout in milliseconds
- * @param message - Optional timeout message
- * @returns A promise that resolves or rejects accordingly
- */
-export function withTimeout<T>(promise: Promise<T>, ms: number, message = "Timeout exceeded"): Promise<T> {
-  const timeout = new Promise<never>((_, reject) => setTimeout(() => reject(new Error(message)), ms));
-  return Promise.race([promise, timeout]);
-}
+import { sleep } from "handy-ts-tools";
 
 /**
  * Retries an asynchronous function a given number of times with optional delay.
@@ -36,7 +15,7 @@ export async function retry<T>(fn: () => Promise<T>, retries = 3, delay = 1000):
       return await fn();
     } catch (err) {
       lastError = err;
-      if (i < retries - 1) await wait(delay);
+      if (i < retries - 1) await sleep(delay);
     }
   }
   throw lastError;
@@ -91,7 +70,7 @@ export async function allSettledMap<T extends Record<string, Promise<any>>>(
 export async function delayUntil(condition: () => boolean, delayMs = 0): Promise<void> {
   await waitFor(condition);
   if (delayMs > 0) {
-    await wait(delayMs);
+    await sleep(delayMs);
   }
 }
 

@@ -37,6 +37,7 @@
     "rxjs": "catalog:",
     "socket.io": "catalog:",
     "socket.io-client": "catalog:",
+    "handy-ts-tools": "catalog:",
     "@types/node": "catalog:"
   }
 }

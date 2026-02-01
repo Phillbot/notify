@@ -1,5 +1,4 @@
 export * from "./array";
-export * from "./assertions";
 export * from "./color";
 export * from "./compare";
 export * from "./date";

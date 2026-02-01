@@ -17,6 +17,7 @@ catalogs:
     # Reactive & Utilities
     rxjs: 7.8.2
     classnames: 2.5.1
+    handy-ts-tools: 2.0.0
 
     # Tools & Build
     typescript: 5.7.3

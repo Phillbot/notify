@@ -1,16 +1,4 @@
-/**
- * Checks if the code is running in a browser environment.
- */
-export function isBrowser(): boolean {
-  return typeof window !== "undefined" && typeof window.document !== "undefined";
-}
-
-/**
- * Checks if the code is running in a Node.js environment.
- */
-export function isNode(): boolean {
-  return typeof process !== "undefined" && process.versions?.node !== undefined;
-}
+import { isBrowser } from "handy-ts-tools";
 
 /**
  * Checks if the device is likely a mobile device based on user agent.
@@ -26,14 +14,6 @@ export function isMobile(): boolean {
 export function isTablet(): boolean {
   if (!isBrowser()) return false;
   return /Tablet|iPad/i.test(navigator.userAgent) && !/Mobile/i.test(navigator.userAgent);
-}
-
-/**
- * Checks if the device supports touch events.
- */
-export function isTouchDevice(): boolean {
-  if (!isBrowser()) return false;
-  return "ontouchstart" in window || navigator.maxTouchPoints > 0;
 }
 
 /**

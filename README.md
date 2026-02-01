@@ -4,7 +4,7 @@
 
 ### Tech Debt & Refactoring
 
-- [ ] **Migrate to `ts-handy-tools`**: Replace custom helper functions in `packages/core/shared/utils` with the `@phillbot/ts-handy-tools` library.
+- [x] **Migrate to `handy-ts-tools`**: Replace custom helper functions in `packages/core/shared/utils` with the `handy-ts-tools` library.
 - [ ] **Upgrade ESLint**: Migrate to ESLint v9+ and Flat Config architecture.
 - [ ] **Package Management**: Audit `node_modules` to ensure clean separation of client/server dependencies (continue optimizing `pnpm-workspace.yaml`).
 
