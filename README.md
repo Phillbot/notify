@@ -10,8 +10,8 @@
 
 ### Quality Assurance (Testing)
 
-- [ ] **Setup Unit Testing Infrastructure**: Install Vitest for `packages/core` and configure `nx test` targets.
-- [ ] **Core Logic Tests**: Write smoke tests for basic MobX stores and Inversify DI setup.
+- [x] **Setup Unit Testing Infrastructure**: Install Vitest for `packages/core` and configure `nx test` targets.
+- [x] **Core Logic Tests**: Write smoke tests for basic MobX stores and Inversify DI setup.
 
 ### CI/CD & DevOps
 
