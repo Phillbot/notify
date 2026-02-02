@@ -26,4 +26,14 @@ export default defineConfig({
       ],
     },
   },
+  resolve: {
+    alias: {
+      "~core/utils": "/home/plbt/dev/notify/packages/core/shared/utils",
+      "~core/types": "/home/plbt/dev/notify/packages/core/shared/types",
+      "~core/config": "/home/plbt/dev/notify/packages/core/shared/config",
+      "~core/di": "/home/plbt/dev/notify/packages/core/shared/di",
+      "~core/stores": "/home/plbt/dev/notify/packages/core/stores",
+      "~core/react": "/home/plbt/dev/notify/packages/core/react",
+    },
+  },
 });
