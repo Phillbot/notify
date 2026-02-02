@@ -1,0 +1,9 @@
+dist/
+node_modules/
+.expo/
+.next/
+coverage/
+package.json
+package-lock.json
+pnpm-lock.yaml
+*.module.scss.d.ts
