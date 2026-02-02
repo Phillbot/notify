@@ -8,7 +8,8 @@
     "*.tsx"
   ],
   "scripts": {
-    "lint": "eslint \"**/*.ts\" --fix"
+    "lint": "eslint \"**/*.ts\" --fix",
+    "test": "vitest"
   },
   "exports": {
     "./utils": "./shared/utils/index.ts",
