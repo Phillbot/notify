@@ -40,20 +40,23 @@
     "dev": "nx run-many -t dev",
     "lint": "nx run-many -t lint",
     "test": "nx run-many -t test",
+    "test:coverage": "nx run-many -t test --coverage",
+    "test:ui": "vitest --ui",
     "graph": "nx graph",
     "infra:up": "sudo docker compose up -d",
     "infra:down": "sudo docker compose down",
     "services": "pnpm infra:up",
-    "format": "nx run-many -t format",
+    "format": "prettier --write \".\"",
     "check": "pnpm run format && pnpm run lint",
     "prepare": "husky"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.4.0",
-    "@commitlint/config-conventional": "^20.4.0",
+    "@commitlint/cli": "catalog:",
+    "@commitlint/config-conventional": "catalog:",
     "@types/node": "catalog:",
     "@typescript-eslint/eslint-plugin": "catalog:",
     "@typescript-eslint/parser": "catalog:",
+    "@vitest/coverage-v8": "catalog:",
     "eslint": "catalog:",
     "eslint-import-resolver-typescript": "catalog:",
     "eslint-plugin-import": "catalog:",
@@ -61,11 +64,15 @@
     "eslint-plugin-react": "catalog:",
     "eslint-plugin-react-hooks": "catalog:",
     "globals": "catalog:",
-    "husky": "^9.1.7",
+    "husky": "catalog:",
+    "lint-staged": "catalog:",
     "nx": "catalog:",
     "prettier": "catalog:",
     "typescript": "catalog:",
-    "vite": "catalog:"
+    "vite": "catalog:",
+    "vitest": "catalog:",
+    "@vitest/ui": "catalog:",
+    "unplugin-swc": "catalog:"
   },
   "pnpm": {
     "onlyBuiltDependencies": [
@@ -73,6 +80,16 @@
       "nx",
       "esbuild",
       "@swc/core"
+    ]
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write",
+      "vitest related --run"
+    ],
+    "*.{json,md,scss,css}": [
+      "prettier --write"
     ]
   }
 }

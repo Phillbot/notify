@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "ESNext",
-    "lib": [
-      "DOM",
-      "DOM.Iterable",
-      "ESNext"
-    ],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "allowArbitraryExtensions": true,
@@ -22,47 +18,19 @@
     "useDefineForClassFields": false,
     "baseUrl": ".",
     "paths": {
-      "~core/utils": [
-        "packages/core/shared/utils"
-      ],
-      "~core/utils/*": [
-        "packages/core/shared/utils/*"
-      ],
-      "~core/types": [
-        "packages/core/shared/types"
-      ],
-      "~core/types/*": [
-        "packages/core/shared/types/*"
-      ],
-      "~core/config": [
-        "packages/core/shared/config"
-      ],
-      "~core/config/*": [
-        "packages/core/shared/config/*"
-      ],
-      "~core/react": [
-        "packages/core/react"
-      ],
-      "~core/react/*": [
-        "packages/core/react/*"
-      ],
-      "~core/di": [
-        "packages/core/shared/di"
-      ],
-      "~core/di/*": [
-        "packages/core/shared/di/*"
-      ],
-      "~core/stores": [
-        "packages/core/stores"
-      ],
-      "~core/stores/*": [
-        "packages/core/stores/*"
-      ]
+      "~core/utils": ["packages/core/shared/utils"],
+      "~core/utils/*": ["packages/core/shared/utils/*"],
+      "~core/types": ["packages/core/shared/types"],
+      "~core/types/*": ["packages/core/shared/types/*"],
+      "~core/config": ["packages/core/shared/config"],
+      "~core/config/*": ["packages/core/shared/config/*"],
+      "~core/react": ["packages/core/react"],
+      "~core/react/*": ["packages/core/react/*"],
+      "~core/di": ["packages/core/shared/di"],
+      "~core/di/*": ["packages/core/shared/di/*"],
+      "~core/stores": ["packages/core/stores"],
+      "~core/stores/*": ["packages/core/stores/*"]
     }
   },
-  "include": [
-    "apps/**/*",
-    "packages/**/*",
-    "global.d.ts"
-  ]
+  "include": ["apps/**/*", "packages/**/*", "global.d.ts"]
 }

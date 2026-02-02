@@ -39,6 +39,16 @@ catalogs:
     lightningcss: 1.27.0
     terser: 5.46.0
     yaml: 2.8.2
+    vitest: 4.0.18
+    "@vitest/ui": 4.0.18
+    "@vitest/coverage-v8": 4.0.18
+    "unplugin-swc": 1.5.1
+    "husky": 9.1.7
+    "lint-staged": 16.2.7
+
+    # Comms
+    "@commitlint/cli": 20.4.0
+    "@commitlint/config-conventional": 20.4.0
 
     # Comms
     socket.io: 4.8.1
