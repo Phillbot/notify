@@ -4,15 +4,15 @@ import { IStorageService } from "~core/shared/storage";
 
 @injectable()
 export class WebStorageService implements IStorageService {
-    async getItem(key: string): Promise<string | null> {
-        return localStorage.getItem(key);
-    }
+  async getItem(key: string): Promise<string | null> {
+    return localStorage.getItem(key);
+  }
 
-    async setItem(key: string, value: string): Promise<void> {
-        localStorage.setItem(key, value);
-    }
+  async setItem(key: string, value: string): Promise<void> {
+    localStorage.setItem(key, value);
+  }
 
-    async removeItem(key: string): Promise<void> {
-        localStorage.removeItem(key);
-    }
+  async removeItem(key: string): Promise<void> {
+    localStorage.removeItem(key);
+  }
 }

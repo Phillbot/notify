@@ -37,10 +37,7 @@ export class LoginView extends Component {
               onKeyDown={this._handleKeyDown}
               placeholder="Your awesome nickname"
             />
-            <button
-              onClick={() => this._controller.join()}
-              disabled={!tempNickname.trim()}
-            >
+            <button onClick={() => this._controller.join()} disabled={!tempNickname.trim()}>
               Join Chat
             </button>
           </div>

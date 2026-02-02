@@ -24,5 +24,5 @@ createRoot(appRoot).render(
     <Provider container={webContainer}>
       <App />
     </Provider>
-  </StrictMode>,
+  </StrictMode>
 );

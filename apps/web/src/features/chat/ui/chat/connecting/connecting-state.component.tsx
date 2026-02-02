@@ -19,9 +19,7 @@ export class ConnectingState extends Component {
         <div className={styles.connectingStateStatus}>
           <div className={styles.connectingStateSpinner}></div>
           <p>Connecting to server...</p>
-          {connectionUrl && (
-            <code className={styles.connectingStateUrl}>{connectionUrl}</code>
-          )}
+          {connectionUrl && <code className={styles.connectingStateUrl}>{connectionUrl}</code>}
         </div>
       </div>
     );

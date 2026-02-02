@@ -29,10 +29,7 @@ export class Chat extends Component {
     this._controller.init();
 
     // Subscribe to AppState changes
-    this.appStateSubscription = AppState.addEventListener(
-      "change",
-      this._handleAppStateChange
-    );
+    this.appStateSubscription = AppState.addEventListener("change", this._handleAppStateChange);
   }
 
   override componentWillUnmount() {

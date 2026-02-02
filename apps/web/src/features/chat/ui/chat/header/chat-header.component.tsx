@@ -18,8 +18,11 @@ export class ChatHeader extends Component {
     if (currentRoomId === "global") roomName = "🌎 Global Chat";
     else if (currentRoomId === "family") roomName = "🏠 Family Chat";
     else if (currentRoomId.startsWith("dm:")) {
-      const targetUserId = currentRoomId.replace("dm:", "").split("_").find(id => id !== userId);
-      const targetUser = onlineUsers.find(u => u.id === targetUserId);
+      const targetUserId = currentRoomId
+        .replace("dm:", "")
+        .split("_")
+        .find((id) => id !== userId);
+      const targetUser = onlineUsers.find((u) => u.id === targetUserId);
       roomName = targetUser ? `💬 Chat with ${targetUser.userName}` : "Private Chat";
     }
 

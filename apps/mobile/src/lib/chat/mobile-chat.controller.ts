@@ -9,9 +9,9 @@ import { getMobileWebSocketUrl } from "../config/mobile-endpoints";
  */
 @injectable()
 export class MobileChatController extends ChatController {
-    public override async init(): Promise<void> {
-        // Use mobile-specific WebSocket URL
-        this._chatStore.connect(getMobileWebSocketUrl());
-        await this.restoreSession();
-    }
+  public override async init(): Promise<void> {
+    // Use mobile-specific WebSocket URL
+    this._chatStore.connect(getMobileWebSocketUrl());
+    await this.restoreSession();
+  }
 }

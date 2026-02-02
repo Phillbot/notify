@@ -49,7 +49,7 @@ export class WebSocketTransport implements IChatTransport {
 
     // Apply queued listeners
     this._eventListeners.forEach((callbacks, event) => {
-      callbacks.forEach(cb => this._socket?.on(event, cb));
+      callbacks.forEach((cb) => this._socket?.on(event, cb));
     });
 
     this._socket.on("connect", () => {

@@ -28,7 +28,7 @@ body {
   /* Strict minimums to mimic native apps */
   min-width: 400px;
 
-  @media (min-width: 1024px) {
+  @media (width >= 1024px) {
     min-height: 500px;
   }
 }
@@ -69,7 +69,6 @@ select {
 
 /* Remove animations for people who prefer that */
 @media (prefers-reduced-motion: reduce) {
-
   *,
   *::before,
   *::after {

@@ -39,9 +39,7 @@ export class ChatMessages extends Component {
                 [styles.chatMessagesItemOwn]: isOwn,
               })}
             >
-              <div className={styles.chatMessagesAvatar}>
-                {msg.from.charAt(0).toUpperCase()}
-              </div>
+              <div className={styles.chatMessagesAvatar}>{msg.from.charAt(0).toUpperCase()}</div>
               <div className={styles.chatMessagesContent}>
                 <div className={styles.chatMessagesSender}>{msg.from}</div>
                 <div className={styles.chatMessagesText}>{msg.text}</div>
