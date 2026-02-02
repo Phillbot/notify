@@ -2,8 +2,8 @@
   "name": "server",
   "version": "0.0.1",
   "private": true,
-  "type": "module",
   "scripts": {
+    "prisma-generate": "prisma generate",
     "build": "nest build",
     "dev": "nest start --watch",
     "start": "nest start",

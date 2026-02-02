@@ -24,5 +24,13 @@
       "~core/stores/*": ["packages/core/stores/*"]
     }
   },
-  "include": ["src/**/*", "../../packages/**/*"]
+  "include": ["src/**/*", "../../packages/**/*"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "../../packages/**/*.test.ts",
+    "../../packages/**/*.spec.ts"
+  ]
 }
