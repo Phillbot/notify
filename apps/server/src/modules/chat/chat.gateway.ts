@@ -12,7 +12,7 @@ import { Server, Socket } from "socket.io";
 
 import { PORTS } from "~core/config";
 
-import { PrismaService } from "@/prisma/prisma.service";
+import { PrismaService } from "@/common/prisma/prisma.service";
 
 interface JoinRoomDto {
   roomId: string;
@@ -32,15 +32,14 @@ interface MessageDto {
     origin: "*",
   },
 })
-export class AppGateway
-  implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
+export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewayDisconnect {
   @WebSocketServer()
   server!: Server;
 
   // Track online users: userId -> { socketId, userName }
   private onlineUsers = new Map<string, { socketId: string; userName: string }>();
 
-  constructor(private readonly prisma: PrismaService) { }
+  constructor(private readonly prisma: PrismaService) {}
 
   afterInit(_server: Server) {
     console.log(`🚀 Socket.io server initialized on port ${PORTS.SERVER_WS}`);
@@ -54,7 +53,9 @@ export class AppGateway
   }
 
   handleDisconnect(client: Socket) {
-    console.log(`🔌 Client disconnected: ${client.id}. Remaining: ${this.server.sockets.sockets.size}`);
+    console.log(
+      `🔌 Client disconnected: ${client.id}. Remaining: ${this.server.sockets.sockets.size}`
+    );
 
     // Find and remove user from online map
     for (const [userId, data] of this.onlineUsers.entries()) {
@@ -68,10 +69,7 @@ export class AppGateway
   }
 
   @SubscribeMessage("joinRoom")
-  async handleJoinRoom(
-    @MessageBody() data: JoinRoomDto,
-    @ConnectedSocket() client: Socket
-  ) {
+  async handleJoinRoom(@MessageBody() data: JoinRoomDto, @ConnectedSocket() client: Socket) {
     const roomId = data.roomId || "global";
     const userId = data.userId;
     const userName = data.userName;
@@ -81,11 +79,13 @@ export class AppGateway
       console.log(`👤 User ${userName} (${userId}) is active`);
 
       // Ensure user exists in DB for foreign key relations
-      this.prisma.user.upsert({
-        where: { id: userId },
-        update: { name: userName },
-        create: { id: userId, name: userName },
-      }).catch(err => console.error(`❌ Failed to upsert user ${userId}:`, err));
+      this.prisma.user
+        .upsert({
+          where: { id: userId },
+          update: { name: userName },
+          create: { id: userId, name: userName },
+        })
+        .catch((err) => console.error(`❌ Failed to upsert user ${userId}:`, err));
 
       this.broadcastUsers();
     }
@@ -105,7 +105,7 @@ export class AppGateway
 
   private async joinRoom(roomId: string, client: Socket) {
     // Leave previous rooms (except for its own id room)
-    client.rooms.forEach(room => {
+    client.rooms.forEach((room) => {
       if (room !== client.id) {
         client.leave(room);
       }
@@ -137,10 +137,7 @@ export class AppGateway
   }
 
   @SubscribeMessage("message")
-  async handleMessage(
-    @MessageBody() data: MessageDto,
-    @ConnectedSocket() client: Socket
-  ) {
+  async handleMessage(@MessageBody() data: MessageDto, @ConnectedSocket() client: Socket) {
     try {
       const senderName = data.userName || `User ${client.id}`;
       const roomId = data.roomId || "global";
@@ -157,21 +154,23 @@ export class AppGateway
       console.log(`📣 Room [${roomId}] From ${senderName}: ${data.text}`);
 
       // Save to DB (async)
-      this.prisma.message.create({
-        data: {
-          text: data.text,
-          senderName: senderName,
-          senderId: client.id,
-          userId: userId,
-          roomId: roomId,
-        },
-      }).catch(err => console.error("❌ Failed to save message to DB:", err));
+      this.prisma.message
+        .create({
+          data: {
+            text: data.text,
+            senderName: senderName,
+            senderId: client.id,
+            userId: userId,
+            roomId: roomId,
+          },
+        })
+        .catch((err) => console.error("❌ Failed to save message to DB:", err));
 
       // Routing logic
       if (roomId.startsWith("dm:")) {
         // Direct Message: Send to both participants specifically
         const participants = roomId.replace("dm:", "").split("_");
-        participants.forEach(pId => {
+        participants.forEach((pId) => {
           const userData = this.onlineUsers.get(pId);
           if (userData) {
             this.server.to(userData.socketId).emit("message", reply);

@@ -2,13 +2,15 @@
   "name": "server",
   "version": "0.0.1",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "nest build",
     "dev": "nest start --watch",
     "start": "nest start",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/apps/server/src/main",
-    "lint": "eslint \"src/**/*.ts\" --fix"
+    "lint": "eslint \"src/**/*.ts\" --fix",
+    "test": "vitest"
   },
   "dependencies": {
     "@nestjs/common": "catalog:",
