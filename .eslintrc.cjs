@@ -45,7 +45,7 @@ module.exports = {
     "import/default": "off",
     "import/no-duplicates": "error",
     "no-multiple-empty-lines": ["error", { max: 1 }],
-    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-explicit-any": "error",
     "jsx-a11y/click-events-have-key-events": "off",
     "jsx-a11y/no-static-element-interactions": "off",
     "react/react-in-jsx-scope": "off",
