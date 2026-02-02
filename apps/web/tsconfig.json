@@ -1,68 +1,27 @@
 {
-  "extends": [
-    "../../tsconfig.base.json"
-  ],
+  "extends": ["../../tsconfig.base.json"],
   "compilerOptions": {
     "jsx": "react-jsx",
     "baseUrl": ".",
-    "rootDirs": [
-      "src",
-      "src/__generated__/styles"
-    ],
+    "rootDirs": ["src", "src/__generated__/styles"],
     "paths": {
-      "@/*": [
-        "src/*"
-      ],
-      "~web-components/*": [
-        "src/components/*"
-      ],
-      "~core": [
-        "../../packages/core"
-      ],
-      "~core/*": [
-        "../../packages/core/*"
-      ],
-      "~core/utils": [
-        "../../packages/core/shared/utils"
-      ],
-      "~core/utils/*": [
-        "../../packages/core/shared/utils/*"
-      ],
-      "~core/types": [
-        "../../packages/core/shared/types"
-      ],
-      "~core/types/*": [
-        "../../packages/core/shared/types/*"
-      ],
-      "~core/config": [
-        "../../packages/core/shared/config"
-      ],
-      "~core/config/*": [
-        "../../packages/core/shared/config/*"
-      ],
-      "~core/react": [
-        "../../packages/core/react"
-      ],
-      "~core/react/*": [
-        "../../packages/core/react/*"
-      ],
-      "~core/di": [
-        "../../packages/core/shared/di"
-      ],
-      "~core/di/*": [
-        "../../packages/core/shared/di/*"
-      ],
-      "~core/stores": [
-        "../../packages/core/stores"
-      ],
-      "~core/stores/*": [
-        "../../packages/core/stores/*"
-      ]
+      "@/*": ["src/*"],
+      "~web-components/*": ["src/components/*"],
+      "~core": ["../../packages/core"],
+      "~core/*": ["../../packages/core/*"],
+      "~core/utils": ["../../packages/core/shared/utils"],
+      "~core/utils/*": ["../../packages/core/shared/utils/*"],
+      "~core/types": ["../../packages/core/shared/types"],
+      "~core/types/*": ["../../packages/core/shared/types/*"],
+      "~core/config": ["../../packages/core/shared/config"],
+      "~core/config/*": ["../../packages/core/shared/config/*"],
+      "~core/react": ["../../packages/core/react"],
+      "~core/react/*": ["../../packages/core/react/*"],
+      "~core/di": ["../../packages/core/shared/di"],
+      "~core/di/*": ["../../packages/core/shared/di/*"],
+      "~core/stores": ["../../packages/core/stores"],
+      "~core/stores/*": ["../../packages/core/stores/*"]
     }
   },
-  "include": [
-    "src/**/*",
-    "vite.config.ts",
-    "../../packages/**/*"
-  ]
+  "include": ["src/**/*", "vite.config.ts", "../../packages/**/*"]
 }
