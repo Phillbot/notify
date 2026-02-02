@@ -1,20 +1,20 @@
 {
-  "name": "desktop",
+  "name": "notify",
   "productName": "Notify",
   "version": "0.0.1",
   "private": true,
   "type": "module",
-  "main": "index.js",
+  "main": "dist/main.cjs",
   "scripts": {
-    "copy:web": "cpy \"../web/dist/**/*\" public",
-    "prestart": "nx build web && pnpm run copy:web",
-    "predev": "pnpm run prestart",
+    "build": "tsup src/main.ts --format cjs --minify --clean --shims --external electron",
+    "dev": "pnpm run copy:web && tsup src/main.ts --format cjs --watch --external electron --onSuccess \"electron .\"",
     "start": "electron .",
-    "dev": "electron .",
+    "lint": "eslint src --ext .ts",
+    "copy:web": "mkdir -p public && cp -r ../web/dist/* public/ && cp ../../packages/core/assets/notify-logo.png public/",
     "prebuild": "nx build web && pnpm run copy:web",
-    "build:mac": "pnpm run prebuild && electron-builder --mac",
-    "build:win": "pnpm run prebuild && electron-builder --win",
-    "build:linux": "pnpm run prebuild && electron-builder --linux"
+    "build:mac": "pnpm run prebuild && pnpm run build && electron-builder --mac",
+    "build:win": "pnpm run prebuild && pnpm run build && electron-builder --win",
+    "build:linux": "pnpm run prebuild && pnpm run build && electron-builder --linux"
   },
   "build": {
     "appId": "com.notify.desktop",
@@ -41,6 +41,7 @@
   "devDependencies": {
     "electron-builder": "catalog:desktop",
     "electron": "catalog:desktop",
-    "cpy-cli": "catalog:"
+    "cpy-cli": "catalog:",
+    "tsup": "catalog:"
   }
 }

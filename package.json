@@ -22,13 +22,14 @@
     "mobile:build:android": "nx build:android mobile",
     "mobile:build:ios": "nx build:ios mobile",
     "mobile:build:web": "nx build:web mobile",
-    "desktop:dev": "nx dev desktop",
-    "desktop:build:mac": "nx build:mac desktop",
-    "desktop:build:win": "nx build:win desktop",
-    "desktop:build:linux": "nx build:linux desktop",
+    "desktop:dev": "nx dev notify",
+    "desktop:build:mac": "nx build:mac notify",
+    "desktop:build:win": "nx build:win notify",
+    "desktop:build:linux": "nx build:linux notify",
     "server:dev": "nx dev server",
     "server:build": "nx build server",
     "server:start": "nx start server",
+    "prisma:generate": "nx run server:prisma-generate",
     "nx:reset": "nx reset",
     "clean:all": "pnpm clean:modules && pnpm clean:builds && pnpm clean:cache",
     "clean:modules": "find . -type d -name \"node_modules\" -prune -exec rm -rf {} +",
@@ -48,7 +49,8 @@
     "services": "pnpm infra:up",
     "format": "prettier --write \".\"",
     "check": "pnpm run format && pnpm run lint",
-    "prepare": "husky"
+    "prepare": "husky",
+    "postinstall": "pnpm prisma:generate"
   },
   "devDependencies": {
     "@commitlint/cli": "catalog:",
