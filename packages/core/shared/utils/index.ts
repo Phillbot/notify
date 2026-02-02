@@ -3,6 +3,7 @@ export * from "./color";
 export * from "./compare";
 export * from "./date";
 export * from "./dom";
+export * from "./electron-ipc";
 export * from "./env";
 export * from "./functions";
 export * from "./math";

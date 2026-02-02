@@ -71,3 +71,11 @@ export function isLinux(): boolean {
   if (!isBrowser()) return false;
   return /Linux/i.test(navigator.userAgent);
 }
+
+/**
+ * Checks if the platform is Electron.
+ */
+export function isElectron(): boolean {
+  if (!isBrowser()) return false;
+  return /Electron/i.test(navigator.userAgent);
+}
