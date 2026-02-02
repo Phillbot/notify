@@ -20,7 +20,10 @@ export type ValueToken = {
  * @param config - An object containing a unique id and the class to bind.
  * @returns A token containing a symbol and class reference.
  */
-export function createServiceToken<T>(config: { id: string; useClass: new (...args: any[]) => T }): ServiceToken<T> {
+export function createServiceToken<T>(config: {
+  id: string;
+  useClass: new (...args: any[]) => T;
+}): ServiceToken<T> {
   return {
     $: Symbol.for(config.id),
     useClass: config.useClass,

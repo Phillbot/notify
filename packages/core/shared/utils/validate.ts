@@ -14,7 +14,8 @@ export function isValidEmail(email: string): boolean {
  * @returns True if the URL is valid, false otherwise.
  */
 export function isValidUrl(url: string): boolean {
-  const regex = /^(https?:\/\/)?([a-zA-Z0-9.-]+)\.([a-zA-Z]{2,})(\/[a-zA-Z0-9&%_=+#\-.]*)?$/;
+  const regex =
+    /^(https?:\/\/)?(localhost|[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})(?::\d+)?(\/[a-zA-Z0-9&%_=+#\-.]*)?$/;
   return regex.test(url);
 }
 

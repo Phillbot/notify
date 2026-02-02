@@ -39,7 +39,11 @@ export function addEventListener(selector: string, event: string, callback: Even
  * @param event - The event type to stop listening for.
  * @param callback - The callback function to remove.
  */
-export function removeEventListener(selector: string, event: string, callback: EventListener): void {
+export function removeEventListener(
+  selector: string,
+  event: string,
+  callback: EventListener
+): void {
   const element = getElement(selector);
   if (element) {
     element.removeEventListener(event, callback);

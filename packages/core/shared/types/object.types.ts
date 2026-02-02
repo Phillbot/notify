@@ -48,7 +48,11 @@ export type ReadonlyByKeys<T, K extends keyof T> = Omit<T, K> & {
 /**
  * Utility type to convert a union to intersection.
  */
-export type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (k: infer I) => void ? I : never;
+export type UnionToIntersection<U> = (U extends any ? (k: U) => void : never) extends (
+  k: infer I
+) => void
+  ? I
+  : never;
 
 /**
  * Flattens a type by merging nested objects into a single level.
@@ -74,7 +78,8 @@ export type DeepUndefined<T> = {
 /**
  * Checks if two types are equal.
  */
-export type IsEqual<T, U> = (<G>() => G extends T ? 1 : 2) extends <G>() => G extends U ? 1 : 2 ? true : false;
+export type IsEqual<T, U> =
+  (<G>() => G extends T ? 1 : 2) extends <G>() => G extends U ? 1 : 2 ? true : false;
 
 /**
  * Gets all keys from T where the value is an object.

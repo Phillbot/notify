@@ -68,8 +68,7 @@ export function getWebSocketUrl(options?: {
     // We need to check if we're on Android
     try {
       // Check if Platform.OS is available in global scope
-      const platformOS = (globalThis as any).Platform?.OS ||
-        (global as any).Platform?.OS;
+      const platformOS = (globalThis as any).Platform?.OS || (global as any).Platform?.OS;
 
       if (platformOS === "android") {
         console.log("🤖 Detected Android - using 10.0.2.2 for WebSocket");

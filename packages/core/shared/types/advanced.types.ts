@@ -2,21 +2,31 @@
  * Makes a type deeply partial (all nested properties become optional).
  */
 export type DeepPartial<T> = {
-  [P in keyof T]?: T[P] extends object ? (T[P] extends (...args: any[]) => any ? T[P] : DeepPartial<T[P]>) : T[P];
+  [P in keyof T]?: T[P] extends object
+    ? T[P] extends (...args: any[]) => any
+      ? T[P]
+      : DeepPartial<T[P]>
+    : T[P];
 };
 
 /**
  * Makes a type deeply required (all nested properties become required).
  */
 export type DeepRequired<T> = {
-  [P in keyof T]-?: T[P] extends object ? (T[P] extends (...args: any[]) => any ? T[P] : DeepRequired<T[P]>) : T[P];
+  [P in keyof T]-?: T[P] extends object
+    ? T[P] extends (...args: any[]) => any
+      ? T[P]
+      : DeepRequired<T[P]>
+    : T[P];
 };
 
 /**
  * Recursively removes null and undefined from a type.
  */
 export type NonNullableDeep<T> = {
-  [P in keyof T]: NonNullable<T[P]> extends object ? NonNullableDeep<NonNullable<T[P]>> : NonNullable<T[P]>;
+  [P in keyof T]: NonNullable<T[P]> extends object
+    ? NonNullableDeep<NonNullable<T[P]>>
+    : NonNullable<T[P]>;
 };
 
 /**

@@ -63,7 +63,7 @@ export class ChatStore implements IChatStore {
     this._transport.onEvent<MessagePayload[]>("history", (history) => {
       if (Array.isArray(history)) {
         action(() => {
-          this._messages = history.map(msg => ({
+          this._messages = history.map((msg) => ({
             from: msg.from || "unknown",
             text: msg.text,
             senderId: msg.senderId,
@@ -141,7 +141,7 @@ export class ChatStore implements IChatStore {
       this._transport.emit("joinRoom", {
         roomId: this._currentRoomId,
         userId: this._userId,
-        userName: name
+        userName: name,
       });
     }
   }
@@ -158,7 +158,7 @@ export class ChatStore implements IChatStore {
       this._transport.emit("joinRoom", {
         roomId,
         userId: this._userId,
-        userName: this._userName
+        userName: this._userName,
       });
     }
   }
@@ -173,7 +173,7 @@ export class ChatStore implements IChatStore {
       this._transport.emit("joinRoom", {
         roomId: this._currentRoomId,
         userId: this._userId,
-        userName: this._userName
+        userName: this._userName,
       });
     }
   }
@@ -206,7 +206,7 @@ export class ChatStore implements IChatStore {
         userName: this.userName || undefined,
         userId: this.userId,
         roomId: this.currentRoomId,
-        from: this.userName || "anonymous"
+        from: this.userName || "anonymous",
       };
       // For socket.io we use emit "message" with object
       this._transport.emit("message", payload);

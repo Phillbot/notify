@@ -29,7 +29,11 @@ export async function retry<T>(fn: () => Promise<T>, retries = 3, delay = 1000):
  * @param timeout - Optional timeout in milliseconds
  * @returns A promise that resolves when the condition is true
  */
-export async function waitFor(condition: () => boolean, interval = 100, timeout = 5000): Promise<void> {
+export async function waitFor(
+  condition: () => boolean,
+  interval = 100,
+  timeout = 5000
+): Promise<void> {
   const start = Date.now();
   return new Promise((resolve, reject) => {
     const check = () => {
@@ -48,9 +52,11 @@ export async function waitFor(condition: () => boolean, interval = 100, timeout 
  * @returns A record with either 'fulfilled' or 'rejected' results
  */
 export async function allSettledMap<T extends Record<string, Promise<any>>>(
-  entries: T,
+  entries: T
 ): Promise<{
-  [K in keyof T]: { status: "fulfilled"; value: Awaited<T[K]> } | { status: "rejected"; reason: unknown };
+  [K in keyof T]:
+    | { status: "fulfilled"; value: Awaited<T[K]> }
+    | { status: "rejected"; reason: unknown };
 }> {
   const keys = Object.keys(entries) as (keyof T)[];
   const results = await Promise.allSettled(Object.values(entries));

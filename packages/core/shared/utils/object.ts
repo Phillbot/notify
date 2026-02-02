@@ -34,7 +34,7 @@ export function flattenObject(obj: Record<string, any>, prefix = ""): Record<str
       }
       return acc;
     },
-    {} as Record<string, any>,
+    {} as Record<string, any>
   );
 }
 

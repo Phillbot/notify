@@ -44,7 +44,9 @@ export function parseUrl(url: string): URL {
  * Converts a plain object into a URL query string.
  * @param params - An object representing query parameters.
  */
-export function objectToQueryString(params: Record<string, string | number | boolean | undefined | null>): string {
+export function objectToQueryString(
+  params: Record<string, string | number | boolean | undefined | null>
+): string {
   return Object.entries(params)
     .filter(([_, v]) => v !== undefined && v !== null)
     .map(([k, v]) => `${encodeURIComponent(k)}=${encodeURIComponent(String(v))}`)

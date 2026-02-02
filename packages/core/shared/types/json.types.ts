@@ -26,7 +26,9 @@ export type ParsedJSON<T = JSONValue> = T;
 /**
  * A utility type for safely serializable objects.
  */
-export type Serializable<T = unknown> = T extends JSONPrimitive | JSONObject | JSONArray ? T : never;
+export type Serializable<T = unknown> = T extends JSONPrimitive | JSONObject | JSONArray
+  ? T
+  : never;
 
 /**
  * Helper to enforce strict JSON structure.

@@ -9,7 +9,7 @@ export interface ChatMessage {
 }
 
 export interface UserOnline {
-  id: string;      // Stable userId
+  id: string; // Stable userId
   userName: string;
   socketId: string;
 }
@@ -34,7 +34,7 @@ export interface MessagePayload {
   from: string;
   text: string;
   senderId?: string;
-  userId?: string;  // Stable user ID
+  userId?: string; // Stable user ID
   roomId?: string;
   userName?: string; // For sending
 }

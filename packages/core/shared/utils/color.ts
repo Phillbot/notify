@@ -34,7 +34,11 @@ export function hexToRgb(hex: string): { r: number; g: number; b: number } | nul
 
   const [r, g, b] =
     result[1].length === 6
-      ? [parseInt(result[1].slice(0, 2), 16), parseInt(result[1].slice(2, 4), 16), parseInt(result[1].slice(4, 6), 16)]
+      ? [
+          parseInt(result[1].slice(0, 2), 16),
+          parseInt(result[1].slice(2, 4), 16),
+          parseInt(result[1].slice(4, 6), 16),
+        ]
       : [
           parseInt(result[1].charAt(0) + result[1].charAt(0), 16),
           parseInt(result[1].charAt(1) + result[1].charAt(1), 16),
@@ -131,7 +135,12 @@ export function rgbToHsl(r: number, g: number, b: number): { h: number; s: numbe
   const s = max === min ? 0 : (max - min) / (max + min);
   const l = h;
 
-  const hue = max === r ? (g - b) / (max - min) : max === g ? 2 + (b - r) / (max - min) : 4 + (r - g) / (max - min);
+  const hue =
+    max === r
+      ? (g - b) / (max - min)
+      : max === g
+        ? 2 + (b - r) / (max - min)
+        : 4 + (r - g) / (max - min);
 
   return {
     h: Math.round((hue * 60 + 360) % 360),
