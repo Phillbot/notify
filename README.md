@@ -65,41 +65,10 @@
 
 ---
 
-## 🤖 AI Agent Instructions (Antigravity Guide)
+---
 
-This section provides context and rules for AI agents (like Antigravity) working on this codebase.
+## 🛠️ Technical Standards
 
-### Project Structure
+This project follows strict engineering guidelines regarding Type Safety (No `any`), Architecture (MobX + Inversify), and Monorepo structure.
 
-- **Monorepo Tool**: `Emulated Nx` (via scripts) + `pnpm workspaces`.
-- **Dependency Management**: strict usage of **pnpm catalogs** in `pnpm-workspace.yaml`.
-  - ⚠️ **DO NOT** add versions directly to `package.json`. Always check catalogs first.
-  - `catalog:default`: Shared tools (ESLint, Prettier, Typescript, Vite plugins, NestJS).
-  - `catalog:mobile`: React Native, Expo.
-  - `catalog:react19`: Web apps.
-  - `catalog:react18`: Mobile apps (due to RN compatibility).
-
-### Key Technologies
-
-- **DI**: `InversifyJS` + `inversify-react`.
-  - **Shared Core**: Modules define bindings (`bind<T>(Token).to(Impl)`).
-  - **Web/Mobile**: Consumers create containers and load modules.
-  - **Mobile Spec**: Requires `babel.config.cjs` with `legacy: true` for decorators.
-- **State Management**: `MobX` (Classes + Decorators).
-- **Backend**: `NestJS` + `Socket.io`.
-
-### Build & Dev Workflow
-
-- **Web**: `pnpm nx dev web` (Vite).
-- **Mobile**: `pnpm nx dev mobile` (Expo).
-  - Note: Mobile uses `babel.config.cjs` to support TS decorators.
-- **Server**: `pnpm nx dev server` (NestJS).
-  - Entry point: `apps/server/src/main.ts`.
-  - Dist output: `dist/apps/server/src/main.js`.
-- **Clean**: Use `pnpm clean:all` to wipe `node_modules`, `dist`, and caches.
-
-### Common Pitfalls
-
-1. **Typescript & CSS Modules**: We use `vite-plugin-sass-dts`. If you see errors about missing styles, run `pnpm nx build web` to regenerate `.d.scss.ts` files.
-2. **Mobile Decorators**: If `@resolve` or `@observer` fail in Mobile, check `babel.config.cjs`.
-3. **Server Dist**: NestJS builds to `dist/apps/server/...`. Always use `--entryFile` for `nest start`.
+For a detailed breakdown of coding standards and agent principles, see [.agent/rules/standard.md](.agent/rules/standard.md).
