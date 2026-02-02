@@ -19,7 +19,8 @@
     "build:web": "expo export:web",
     "run:android": "expo run:android",
     "run:ios": "expo run:ios",
-    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix"
+    "lint": "eslint \"src/**/*.{ts,tsx}\" --fix",
+    "test": "vitest"
   },
   "dependencies": {
     "@babel/runtime": "catalog:",
