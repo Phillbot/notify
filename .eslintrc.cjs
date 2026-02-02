@@ -59,7 +59,15 @@ module.exports = {
     "import/order": [
       "error",
       {
-        groups: ["builtin", "external", "internal", ["parent", "sibling", "index"], "object", "type", "unknown"],
+        groups: [
+          "builtin",
+          "external",
+          "internal",
+          ["parent", "sibling", "index"],
+          "object",
+          "type",
+          "unknown",
+        ],
         pathGroups: [
           {
             pattern: "**/*.module.scss",

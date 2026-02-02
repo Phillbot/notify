@@ -1,5 +1,6 @@
 node_modules
 dist
+coverage
 .vite
 *.md.scss.d.ts
 *.module.scss.d.ts
