@@ -6,7 +6,6 @@ import { IStorageService } from "~core/shared/storage";
 import { IChatStore, IChatTransport, ChatStore } from "~core/stores/chat";
 import { ICounterStore } from "~core/stores/counter";
 
-import { WebCounterCore } from "@/features/counter/ui/counter.store";
 import { WebStorageService } from "@/features/storage/web-storage.service";
 import { WebSocketTransport } from "@/lib/transport";
 
@@ -18,9 +17,6 @@ if (!coreContainer.isBound(ICounterStore.$)) {
 export const webContainer = coreContainer.createChild();
 
 const webModule = new ContainerModule((bind) => {
-  // Override base counter with web implementation
-  bind<ICounterStore>(ICounterStore.$).to(WebCounterCore);
-
   // Register transports and stores for Web
   bind<IChatTransport>(IChatTransport.$).to(WebSocketTransport).inSingletonScope();
   bind<IChatStore>(IChatStore.$).to(ChatStore).inSingletonScope();
