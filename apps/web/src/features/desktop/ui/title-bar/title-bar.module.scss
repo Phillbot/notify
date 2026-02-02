@@ -1,0 +1,64 @@
+@use "@/styles/mixins/media";
+
+.title-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 32px;
+  background-color: var(--bg-secondary, #1a1a1a);
+  color: var(--text-primary, #ffffff);
+  border-bottom: 1px solid var(--border-color, #333333);
+  user-select: none;
+  z-index: 9999;
+
+  &__drag-region {
+    flex: 1;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    -webkit-app-region: drag;
+
+    /* Allows moving the window */
+  }
+
+  &__controls {
+    display: flex;
+    height: 100%;
+    -webkit-app-region: no-drag;
+
+    /* Buttons should not be draggable */
+  }
+
+  &__control-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 46px;
+    height: 100%;
+    border: none;
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: rgb(255 255 255 / 10%);
+    }
+
+    svg {
+      opacity: 0.7;
+    }
+  }
+
+  &__close-button {
+    &:hover {
+      background-color: #e81123 !important;
+      color: #ffffff;
+
+      svg {
+        opacity: 1;
+      }
+    }
+  }
+}
